@@ -1,12 +1,14 @@
 #include <string.h>
 #include <stdio.h>
-
-void	*ft_memmove(void *dst, void *src, int n);
-
-int main() 
-{ 
-	char csrc[100] = "Geeksfor"; 
-	ft_memmove(csrc+5, csrc, strlen(csrc)+1); 
-	printf("%s", csrc); 
+#include <stdlib.h>
+int	ft_strlcpy(void *dst, void *src, unsigned int n);
+//Sample program to show that memmove() is better than memcpy() 
+// when addresses overlap. 
+#include <stdio.h> 
+#include <string.h> 
+int main(void) 
+{
+	char src[100] = "Geeksfor";
+	printf("%s",ft_strlcpy(src, src + 2 , 6));
 	return 0; 
 } 
