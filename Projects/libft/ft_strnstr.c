@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 20:02:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 23:23:11 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/11 22:34:04 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/11 22:42:04 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcat(char *dst, const char *src, size_t n)
+char	*ft_strnstr(comst char *str, const char *to_find, size_t len)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = 0;
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	while (dst[i] != '\0')
-		i++;
-	while (src[j] != '\0' && n - ft_strlen(dst) - 1 > 0)
+	if (*to_find == '\0')
+		return (str);
+	while (*str != '\0' && len > 0)
 	{
-		dst[i] = src[j];
-		i++;
-		j++;
-		n--;
+		i = 0;
+		while (*(str + i) == *(to_find + i))
+		{
+			i++;
+			if (*(to_find + i) == '\0')
+				return (str);
+		}
+		str++;
+		len--;
 	}
-	dst[i] = '\0';
-	return (len_src + len_dst);
+	return (str);
 }

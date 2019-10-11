@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 20:02:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 23:23:11 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/11 22:02:43 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/11 22:33:54 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcat(char *dst, const char *src, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	while (dst[i] != '\0')
-		i++;
-	while (src[j] != '\0' && n - ft_strlen(dst) - 1 > 0)
+	while (s[i] != '\0')
 	{
-		dst[i] = src[j];
 		i++;
-		j++;
-		n--;
 	}
-	dst[i] = '\0';
-	return (len_src + len_dst);
+	while (s[i])
+	{
+		if (s[i] == (char) c)
+			return(s);
+		i--;
+	}
+	return (0);
 }

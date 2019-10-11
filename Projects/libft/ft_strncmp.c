@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 20:02:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 23:23:11 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/11 22:45:10 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/11 22:50:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcat(char *dst, const char *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	while (dst[i] != '\0')
+	while (s1[i] != s2[i] && i < n)
 		i++;
-	while (src[j] != '\0' && n - ft_strlen(dst) - 1 > 0)
-	{
-		dst[i] = src[j];
-		i++;
-		j++;
-		n--;
-	}
-	dst[i] = '\0';
-	return (len_src + len_dst);
+	return (s1[i] - s2[i])	
 }
