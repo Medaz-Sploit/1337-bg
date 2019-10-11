@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 19:13:39 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/11 20:02:50 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/11 20:40:32 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str)
+
+size_t	strlcat(char *dst, const char *src, size_t n)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while(str[i] != '\0')
+	j = 0;
+	if (*src < *dst && *dst > *src + n)
 	{
-		i++;
-	}
-	return (i);
-}
-int	ft_strlcpy(char *dst, char *src, unsigned int n)
-{
-	int len;
-	len = 0;
 
-	while (*src  != '\0' && n - 1 > 0)
+	}
+	while (dst[i] != '\0')
+		i++;
+	while (src[j] != '\0' && n - ft_strlen(dst) - 1 > 0)
 	{
-		*dst = *src;
-		dst++;
-		len++;
-		src++;
+		dst[i] = src[j];
+		i++;
+		j++;
 		n--;
 	}
-	*dst = '\0';
-	return (len + ft_strlen(src));
+	dst[i] = '\0';
+	return (*dst + src);
 }
