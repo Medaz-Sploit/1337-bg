@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-int	ft_strlcpy(void *dst, void *src, unsigned int n);
+int	ft_strlcpy(char *dst, char *src, unsigned int n);
 //Sample program to show that memmove() is better than memcpy() 
 // when addresses overlap. 
 #include <stdio.h> 
@@ -9,6 +9,8 @@ int	ft_strlcpy(void *dst, void *src, unsigned int n);
 int main(void) 
 {
 	char src[100] = "Geeksfor";
-	printf("%s",ft_strlcpy(src, src + 2 , 6));
+	//ret = strlcpy(src, src + 2 , 3);
+	printf("%lu\n",strlcpy(src, src +2 , 3));
+	printf("%s\n",src);
 	return 0; 
 } 
