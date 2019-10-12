@@ -9,15 +9,13 @@
 /*   Updated: 2019/10/12 18:59:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdlib.h>
 #include "ft_strlen.c"
-#include "ft_memcpy.c"
+#include "ft_strlcpy.c"
 
-char	*strdup(const char *s1, size_t n)
+char	*strdup(const char *s1)
 {
 	const char *copy;
-	copy = malloc(n);
-	if (n < ft_strlen(s1))
-		return (0);
-	ft_memcpy(copy, s1, n);
+	copy = malloc((ft_strlen(s1) - 1)*sizeof(char));
+	ft_strlcpy((char)copy,(char)s1, sizeof(s1));
 }
