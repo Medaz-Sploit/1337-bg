@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 20:02:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 23:23:11 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:30:26 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ size_t	strlcat(char *dst, const char *src, size_t n)
 		n--;
 	}
 	dst[i] = '\0';
+	if (len_dst > n)
+		return (len_src + n);
 	return (len_src + len_dst);
 }

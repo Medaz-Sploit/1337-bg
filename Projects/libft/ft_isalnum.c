@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 16:29:45 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 15:31:46 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/12 15:36:23 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str)
-{
-	int i;
 
-	i = 0;
-	while(str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-int	ft_strlcpy(char *dst, char *src, unsigned int n)
+int	ft_isalnum(int c)
 {
-	int lsrc;
+	unsigned str;
 
-	lsrc = ft_strlen(src);
-	while (*src  != '\0' && n - 1 > 0)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-		n--;
-	}
-	*dst = '\0';
-	return (lsrc);
+	str = (unsigned char) c;
+	if (ft_isalpha(str) == 1 && ft_isdigit(str) == 1)
+	   return (1);
+	return (0);	
 }

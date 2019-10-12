@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 16:29:45 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 16:00:08 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/12 16:04:25 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str)
+
+int	ft_toupper(int c)
 {
+	unsigned char str;
 	int i;
 
 	i = 0;
-	while(str[i] != '\0')
+	str = (unsigned char) c;
+	while (str[i] != '\0')
 	{
+		if (str[i] >= 'a' &&  str[i] <= 'z')
+			str[i] -= 32;
 		i++;
 	}
-	return (i);
-}
-int	ft_strlcpy(char *dst, char *src, unsigned int n)
-{
-	int lsrc;
-
-	lsrc = ft_strlen(src);
-	while (*src  != '\0' && n - 1 > 0)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-		n--;
-	}
-	*dst = '\0';
-	return (lsrc);
+	return (str);
 }

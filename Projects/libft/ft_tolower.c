@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 16:29:45 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 16:04:42 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/12 16:27:29 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str)
+
+int	ft_tolower(int c)
 {
+	unsigned char str;
 	int i;
 
+	str = (unsigned char) c;
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
 		i++;
 	}
-	return (i);
-}
-int	ft_strlcpy(char *dst, char *src, unsigned int n)
-{
-	int lsrc;
-
-	lsrc = ft_strlen(src);
-	while (*src  != '\0' && n - 1 > 0)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-		n--;
-	}
-	*dst = '\0';
-	return (lsrc);
+	return (str);
 }
