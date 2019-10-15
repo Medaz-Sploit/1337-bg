@@ -6,24 +6,13 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:51:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 15:57:47 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 01:08:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isprint(int c)
+int	ft_isprint(int c)
 {
-	unsigned char str;
-	int i;
-	int j;
-
-	str = (unsigned char) c;
-	i = 0;
-	j  0;
-	while (str[i] != '\0')
-		i++;
-	while (str[j] >= 32 && str[j] <= 126)
-		j++;
-	if (i != j)
-		return (0);
-	return (1);
+	while (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

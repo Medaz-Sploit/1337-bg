@@ -6,16 +6,20 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 21:55:56 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/11 22:01:37 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 04:59:37 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
+	if (c == '\0' || !*s)
+		return ((char*)(s + ft_strlen(s)));
 	while (*s != '\0')
 	{
-		if(*s == (char) c)
-			return (s);
+		if (*s == (char)c)
+			return ((char*)s);
 		s++;
 	}
 	return (0);

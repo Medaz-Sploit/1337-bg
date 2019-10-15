@@ -6,18 +6,23 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 00:01:24 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/10 17:01:20 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 01:16:20 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memcpy(void *dst, void *src, int n)
 {
-	while (n > 0)
+	int		i;
+	char	*s1;
+	char	*s2;
+
+	i = 0;
+	s1 = (char*)dst;
+	s2 = (char*)src;
+	while (*s2 && i < n)
 	{
-		*((char*)dst) = *((char*)src);
-		dst++;
-		src++;
-		n--;
+		s1[i] = s2[i];
+		i++;
 	}
-	return (dst);
+	return (s1);
 }

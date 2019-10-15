@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 17:32:12 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/10 17:49:43 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 01:20:20 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ void	*ft_memchr(void *s, int c, int n)
 {
 	while (n > 0)
 	{
-		if ((unsigned char) c == *((char*)s))
+		if ((char)c == *((char*)s))
 			return (s);
 		s++;
 		n--;

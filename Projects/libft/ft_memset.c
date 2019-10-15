@@ -6,19 +6,21 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:39:52 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/09 22:14:58 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 01:13:34 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memset(void *b, int c, int len)
 {
-	char* ptr;
+	int		i;
+	char	*ptr;
 
-	ptr = (char*) b;
-	while (*ptr < len)
+	ptr = (char*)b;
+	i = 0;
+	while (ptr[i] && i < len)
 	{
-		*ptr = (unsigned char) c;
-		ptr++;
+		ptr[i] = (unsigned char)c;
+		i++;
 	}
 	return (ptr);
 }

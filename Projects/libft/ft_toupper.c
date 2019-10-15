@@ -6,22 +6,13 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 16:00:08 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 16:04:25 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/14 16:25:27 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
-	unsigned char str;
-	int i;
-
-	i = 0;
-	str = (unsigned char) c;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 'a' &&  str[i] <= 'z')
-			str[i] -= 32;
-		i++;
-	}
-	return (str);
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }

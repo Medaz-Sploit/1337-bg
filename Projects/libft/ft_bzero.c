@@ -6,11 +6,11 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 22:51:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 18:19:11 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 01:14:21 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_memset.c"
+#include "libft.h"
 
 void	ft_bzero(void *str, int n)
 {

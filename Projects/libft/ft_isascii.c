@@ -6,24 +6,13 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 15:39:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/12 15:45:10 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/14 22:53:28 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isascii(int c)
+int	ft_isascii(int c)
 {
-	unsigned char str;
-	str = (unsigned char) c;
-	int i;
-	int j;
-
-	i= 0;
-	j = 0;
-	while (str[i] != '\0')
-		i++;
-	if (str[j] >= 0 && str[j] <= 127)
-		j++;
-	if (i != j)
-		return (0);
-	return (1);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
