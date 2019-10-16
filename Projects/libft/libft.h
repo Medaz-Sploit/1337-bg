@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 15:43:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/15 05:34:05 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/15 23:14:50 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ char		*ft_strrchr(const char *s, int c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+char		*ft_strtrim(char const *s1, char const *set);
 #endif
