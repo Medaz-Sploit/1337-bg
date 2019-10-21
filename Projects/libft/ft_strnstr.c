@@ -15,22 +15,26 @@
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	int i;
+	char	*s;
+	char	*find;
 
-	if (*to_find == '\0')
-		return ((char*)str);
-	while (*str != '\0' && len > 0)
+	s = (char*)str;
+	find = (char*)to_find;
+	if (*find == '\0')
+		return (s);
+	while (*s && len > 0)
 	{
 		i = 0;
-		while ((*(str + i) == *(to_find + i) || !*(to_find + i)) && len > 0)
+		while ((*(s + i) == *(find + i) || !*(find + i)) && len > 0)
 		{
-			if (*(to_find + i) == '\0')
+			if (*(find + i) == '\0')
 			{
-				return ((char*)str);
+				return (s);
 			}
 			i++;
 			len--;
 		}
-		str++;
+		s++;
 		len--;
 	}
 	return (0);

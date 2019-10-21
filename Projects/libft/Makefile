@@ -23,7 +23,7 @@ SRC = 		ft_isalnum.c ft_memmove.c ft_split.c \
 			ft_putendl_fd.c ft_strjoin.c ft_strnstr.c ft_bzero.c       \
 			ft_isprint.c ft_memcmp.c ft_putnbr_fd.c ft_strlcat.c     \
 			ft_strrchr.c ft_calloc.c ft_itoa.c ft_memcpy.c \
-			ft_putstr_fd.c ft_strlcpy.c ft_strtrim.c
+			ft_putstr_fd.c ft_strlcpy.c ft_strtrim.c ft_strnlen.c
 
 OBJ =		ft_isalnum.o ft_memmove.o ft_split.o \
 			ft_strlen.o ft_substr.o ft_isalpha.o \
@@ -34,7 +34,7 @@ OBJ =		ft_isalnum.o ft_memmove.o ft_split.o \
 			ft_putendl_fd.o ft_strjoin.o ft_strnstr.o ft_bzero.o \
 			ft_isprint.o ft_memcmp.o ft_putnbr_fd.o ft_strlcat.o \
 			ft_strrchr.o ft_calloc.o ft_itoa.o ft_memcpy.o \
-			ft_putstr_fd.o ft_strlcpy.o ft_strtrim.o
+			ft_putstr_fd.o ft_strlcpy.o ft_strtrim.o ft_strnlen.o
 
 SRC_BONUS =	ft_lstnew_bonus.c	
 OBJ_BONUS = ft_lstnew_bonus.o
