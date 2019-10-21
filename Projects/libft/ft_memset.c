@@ -6,18 +6,20 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:39:52 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/15 01:13:34 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/20 04:35:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, int len)
-{
-	int		i;
-	char	*ptr;
+#include "libft.h"
 
-	ptr = (char*)b;
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t		i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char*)b;
 	i = 0;
-	while (ptr[i] && i < len)
+	while (i < len)
 	{
 		ptr[i] = (unsigned char)c;
 		i++;

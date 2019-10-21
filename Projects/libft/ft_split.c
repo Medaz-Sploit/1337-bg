@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/11 16:37:13 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/17 16:53:25 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/19 23:35:20 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/20 04:09:32 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	word(char *str)
 {
@@ -65,17 +65,17 @@ void	insert_element(char *str, char **tab, int i)
 	tab[i][j] = '\0';
 }
 
-char	**ft_split_whitespaces(char const *str , char c) 
+char	**ft_split(char const *str , char c) 
 {
 	char	**tab;
 	char	*ptr;
 	int		j;
 	int		i;
 
-	j = word(str);
+	j = word((char*)str);
 	ptr = (char*)str;
 	i = 0;
-	tab = (char **)malloc((word(str) + 1) * sizeof(char*));
+	tab = (char **)malloc((word((char*)str) + 1) * sizeof(char*));
 	while (*ptr != '\0')
 	{
 		while (*ptr == c)

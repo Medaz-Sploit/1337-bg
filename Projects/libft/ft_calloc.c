@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 18:00:07 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/15 05:48:53 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/20 08:00:17 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (!(ret = (void*)malloc(size * count)))
 		return (NULL);
-	ft_bzero(ret, size);
+	ft_bzero(ret, count * size);
 	return (ret);
 }

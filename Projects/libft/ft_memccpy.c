@@ -6,24 +6,29 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 13:14:36 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/15 01:17:25 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/20 05:26:34 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memccpy(void *dst, void *src, int c, int n)
+#include "libft.h"
+
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
+	unsigned char *ptr;
+
+	ptr = (unsigned char*)src;
 	while (n > 0)
 	{
-		if ((unsigned char)c == *((char*)src))
+		if ((unsigned char)c == *ptr)
 		{
-			*((char*)dst) = *((char*)src);
+			*((unsigned char*)dst) = *ptr;
 			return (dst + 1);
 			break ;
 		}
-		*((char*)dst) = *((char*)src);
+		*((unsigned char*)dst) = *ptr;
 		n--;
+		ptr++;
 		dst++;
-		src++;
 	}
 	return (0);
 }

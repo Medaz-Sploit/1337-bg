@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 22:51:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/15 01:14:21 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/20 07:59:12 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_bzero(void *str, int n)
 {
-	ft_memset(str, 0, n);
+	if (n)
+		ft_memset(str, 0, n);
 }
