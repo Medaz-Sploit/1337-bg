@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 19:36:37 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/20 21:40:01 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/23 00:53:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 	lsrc = ft_strlen((char*)src);
 	if (n == 0)
 		return (lsrc);
-	while (src[i] && i < n - 1)
+	while (src[i] != '\0' && i < n - 1)
 	{
 		dst[i] = src[i];
 		i++;
