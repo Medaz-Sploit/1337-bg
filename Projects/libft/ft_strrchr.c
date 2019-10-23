@@ -20,14 +20,14 @@ char	*ft_strrchr(const char *s, int c)
 	len = 0;
 	i = 0;
 	if (c == '\0')
-		return ((char*)(s + ft_strlen(s)));
+		return ((char*)s + ft_strlen(s));
 	while (*s != '\0')
 	{
 		s++;
 		len++;
 	}
 	s--;
-	while (*s != '\0' && i < len)
+	while (i < len)
 	{
 		if (*s == (char)c)
 			return ((char*)s);
