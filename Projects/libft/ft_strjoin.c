@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 04:04:41 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/23 01:28:29 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 23:00:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
-	int j;
-	char *bf;
+	int		i;
+	int		j;
+	char	*bf;
 
 	if (s1 && s2)
 		i = ft_strlen(s1) + ft_strlen(s2);

@@ -6,13 +6,13 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:35:20 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/24 04:58:53 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/25 01:31:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*free_tab(char **tab, int i)
+static	void	*free_tab(char **tab, int i)
 {
 	while (i >= 0)
 	{
@@ -23,10 +23,11 @@ void	*free_tab(char **tab, int i)
 	tab = NULL;
 	return (NULL);
 }
-char	word(char *str,  char c)
+
+static	char	word(char *str, char c)
 {
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 1;
@@ -50,7 +51,7 @@ char	word(char *str,  char c)
 	return (count);
 }
 
-int		chars(char *str , char c)
+static	int	chars(char *str, char c)
 {
 	int		i;
 
@@ -62,47 +63,39 @@ int		chars(char *str , char c)
 	return (i);
 }
 
-void	insert_element(char *str, char **tab, int i , char c)
+char	**spliter(char const *str, char c, int i, int j)
 {
-	int		j;
+	char		**tab;
+	char		*ptr;
 
-	j = 0;
-	while (str[j] != c && str[j] != '\0')
-	{
-		tab[i][j] = str[j];
-		j++;
-	}
-	tab[i][j] = '\0';
-}
-
-char	**ft_split(char const *str , char c) 
-{
-	char	**tab;
-	char	*ptr;
-	int		j;
-	int		i;
-	
-	if (!str || !c)
+	if (!str)
 		return (NULL);
-	j = word((char*)str, c);
 	ptr = (char*)str;
-	i = 0;
-	if (!(tab = (char **)malloc((1 + word((char*)str, c) + 1) 
+	if (!(tab = (char **)malloc((1 + word((char*)str, c) + 1)
 		* sizeof(char*))))
 		return (NULL);
 	while (*ptr != '\0')
 	{
-		while (*ptr == c) 
+		while (*ptr == c)
 			ptr++;
-		if (*ptr == '\0') 
+		if (*ptr == '\0')
 			break ;
-		if (!(tab[i] = (char *)malloc(1 + chars(ptr, c) * sizeof(char))))
-			if(!(free_tab(tab, i - 1))) 
+		if (!(tab[++i] = (char *)malloc(1 + chars(ptr, c) * sizeof(char))))
+			if (!(free_tab(tab, i - 1)))
 				break ;
 		insert_element(ptr, tab, i, c);
 		ptr += chars(ptr, c);
-		i++;
 	}
 	tab[j] = 0;
 	return (tab);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char		**split;
+
+	if (!s)
+		return (0);
+	split = spliter(s, c, -1, word((char*)s, c));
+	return (split);
 }

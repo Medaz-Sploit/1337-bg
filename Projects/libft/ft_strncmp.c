@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 22:45:10 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/20 08:36:35 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 23:10:38 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (n-- && (*ss1 || *ss2))
 	{
 		if (*ss1++ != *ss2++)
-			return (*(ss1 - 1) - *(ss2 - 1));		
+			return (*(ss1 - 1) - *(ss2 - 1));
 	}
 	return (0);
 }

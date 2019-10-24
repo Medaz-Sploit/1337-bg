@@ -6,13 +6,13 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:43:54 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/24 02:54:40 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:50:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
-void 	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
 		return ;

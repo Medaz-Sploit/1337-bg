@@ -6,15 +6,15 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:27:52 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/24 04:58:24 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 22:57:44 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_nb_size(long int nb)
+int		get_nb_size(long int nb)
 {
-	int size;
+	int		size;
 
 	size = 0;
 	while (nb)
@@ -24,11 +24,12 @@ int	get_nb_size(long int nb)
 	}
 	return (size);
 }
+
 char	*ft_itoa(int nb)
 {
-	char	*str;
-	long int number;
-	int		index;
+	char		*str;
+	long int	number;
+	int			index;
 
 	number = nb;
 	if (number < 0)
