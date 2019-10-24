@@ -6,18 +6,18 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:35:20 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/24 02:42:25 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:24:14 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*free_tab(char **tab, int b)
+void	*free_tab(char **tab, int i)
 {
-	while (b <= 0)
+	while (i >= 0)
 	{
-		free(tab[b]);
-		b++;
+		free(tab[i]);
+		i--;
 	}
 	free(tab);
 	tab = NULL;
@@ -50,7 +50,7 @@ char	word(char *str,  char c)
 	return (count);
 }
 
-char	chars(char *str , char c)
+int		chars(char *str , char c)
 {
 	int		i;
 
@@ -81,24 +81,21 @@ char	**ft_split(char const *str , char c)
 	char	*ptr;
 	int		j;
 	int		i;
-	int		b;
-
+	
+	if (!str || !c)
+		return (NULL);
 	j = word((char*)str, c);
 	ptr = (char*)str;
 	i = 0;
-	b = 0;
-	if (!str || !(tab = (char **)malloc((word((char*)str, c) + 1) 
+	if (!(tab = (char **)malloc((1 + word((char*)str, c) + 1) 
 		* sizeof(char*))))
 		return (NULL);
 	while (*ptr != '\0')
 	{
-		while (*ptr == c)
-			ptr++;
-		if (*ptr == '\0')
-			break ;
-		if (!(tab[i] = (char *)malloc(chars(ptr, c) * sizeof(char))))
-			if(!(free_tab(tab, b)))
-				break;
+		while (*ptr == c) ptr++;
+		if (*ptr == '\0') break ;
+		if (!(tab[i] = (char *)malloc(1 + chars(ptr, c) * sizeof(char))))
+			if(!(free_tab(tab, i - 1))) break ;
 		insert_element(ptr, tab, i, c);
 		ptr += chars(ptr, c);
 		i++;

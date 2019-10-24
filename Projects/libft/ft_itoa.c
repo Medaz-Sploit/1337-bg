@@ -6,48 +6,45 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:27:52 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/19 23:45:26 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:25:59 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_nb_size(int nb)
+int	get_nb_size(long int nb)
 {
-	unsigned int size;
+	int size;
 
 	size = 0;
-	while (nb >= 10)
+	while (nb)
 	{
 		nb /= 10;
-		++size;
+		size++;
 	}
-	return (size + 1);
+	return (size);
 }
 char	*ft_itoa(int nb)
 {
 	char	*str;
-	unsigned int nbr;
-	unsigned int index;
-	unsigned int size;
+	long int number;
+	int		index;
 
-	if (nb < 0)
-		nbr =  (unsigned int)(nb * -1);
-	else
-		nbr = (unsigned int)nb;
-	size = (unsigned int)get_nb_size(nb);
-	index = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nb < 0 ? 1 : 0)))))
+	number = nb;
+	if (number < 0)
+		number *= -1;
+	index = get_nb_size(number) + ((nb <= 0) ? 1 : 0);
+	if (!(str = (char*)malloc(sizeof(char) * index + 1)))
 		return (0);
-	if (nb < 0 && (str[index] = '-'))
-		size++;
-	index = size - 1;
-	while (nb >= 10)
+	if (number == 0)
+		str[0] = 48;
+	str[index] = '\0';
+	if (nb < 0)
+		str[0] = '-';
+	while (number)
 	{
-		str[index--] = (char)(nb % 10 + 48);
-		nb /= 10;
+		str[--index] = (char)(number % 10 + 48);
+		number /= 10;
 	}
-	str[index] = (char)(nb % 10 + 48);
-	str[size] = '\0';
 	return (str);
 }

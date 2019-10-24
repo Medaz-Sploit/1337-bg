@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:41:38 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/17 22:43:09 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 02:54:55 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s != '\0')
 	{
 		write(fd, s, 1);
