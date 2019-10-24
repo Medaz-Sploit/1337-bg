@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:35:20 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/24 04:24:14 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/24 04:58:53 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,13 @@ char	**ft_split(char const *str , char c)
 		return (NULL);
 	while (*ptr != '\0')
 	{
-		while (*ptr == c) ptr++;
-		if (*ptr == '\0') break ;
+		while (*ptr == c) 
+			ptr++;
+		if (*ptr == '\0') 
+			break ;
 		if (!(tab[i] = (char *)malloc(1 + chars(ptr, c) * sizeof(char))))
-			if(!(free_tab(tab, i - 1))) break ;
+			if(!(free_tab(tab, i - 1))) 
+				break ;
 		insert_element(ptr, tab, i, c);
 		ptr += chars(ptr, c);
 		i++;
