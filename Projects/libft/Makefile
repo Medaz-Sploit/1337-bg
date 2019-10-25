@@ -38,9 +38,6 @@ OBJ =		ft_isalnum.o ft_memmove.o ft_split.o \
 			ft_putstr_fd.o ft_strlcpy.o ft_strtrim.o ft_strnlen.o \
 			ft_insert_element.o
 
-SRC_BONUS =	ft_lstnew_bonus.c	
-OBJ_BONUS = ft_lstnew_bonus.o
-
 all : $(NAME)
 
 $(NAME):
@@ -55,8 +52,3 @@ clean:
 	rm -f *.o
 
 re: fclean all
-
-bonus:
-	$(CC) $(FLAGS) -c $(SRC_BONUS)
-	ar -rs $(NAME) $(OBJ_BONUS)
-	ranlib $(NAME) 
