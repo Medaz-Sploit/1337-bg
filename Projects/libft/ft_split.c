@@ -6,7 +6,7 @@
 /*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 23:35:20 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/10/25 01:31:16 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/10/25 01:54:34 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static	char	word(char *str, char c)
 	return (count);
 }
 
-static	int	chars(char *str, char c)
+static	int		chars(char *str, char c)
 {
 	int		i;
 
@@ -63,7 +63,7 @@ static	int	chars(char *str, char c)
 	return (i);
 }
 
-char	**spliter(char const *str, char c, int i, int j)
+char			**spliter(char const *str, char c, int i, int j)
 {
 	char		**tab;
 	char		*ptr;
@@ -72,7 +72,7 @@ char	**spliter(char const *str, char c, int i, int j)
 		return (NULL);
 	ptr = (char*)str;
 	if (!(tab = (char **)malloc((1 + word((char*)str, c) + 1)
-		* sizeof(char*))))
+					* sizeof(char*))))
 		return (NULL);
 	while (*ptr != '\0')
 	{
@@ -90,7 +90,7 @@ char	**spliter(char const *str, char c, int i, int j)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char		**split;
 
