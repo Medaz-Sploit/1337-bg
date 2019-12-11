@@ -6,45 +6,48 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/07 19:51:16 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:26:58 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-typdef struct s_data
-{
-	int precision = 0;
-	int zero = 0;
-	int star = 0;
-	int moin = 0;
+typedef struct s_data{
+	int moin;
+	int zero;
+	int precision;
+	int star;
 }t_data;
 
-int flags(*format, t_data)
+void flags(int *format, t_data my_data)
 {
-	struct t_data my_data;
-	while (*format)
+	if (*format == '*')
 	{
 		format++;
-		if (*format != '*')
-		{
-			format++;
-			my_data.star = 1;
-		}
-		if (*format != '0')
-		{
-			format++;
-			my_data.zero = 1;
-		}
-		if (*format != '-')
-		{
-			
-		}
+		my_data.star = 1;
+	}
+	if (*format == '0')
+	{
+		format++;
+		my_data.zero = 1;
+	}
+	if (*format == '-')
+	{
+		format++;
+		my_data.moin = 1;
+	}
+	if (*format == '.')
+	{
+		format++;
+		my_data.precision = 1;
+	}
 }
 
 
-int ft_printf(const char *format, ...)
+
+int ft_printf(const char *format, ...) // handle all convertions such as `p` `i` `u` `x` `X` `%`
 {
+
 	va_list argp;
 	int d;
 	char *p;
@@ -54,7 +57,7 @@ int ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'd')
+			if (*format == 'd' || *format == 'i')
 			{
 				format++;
 				d = va_arg(argp, int);
@@ -72,17 +75,14 @@ int ft_printf(const char *format, ...)
 				d = va_arg(argp, int);
 				ft_putchar(d);
 			}
-			if (*format == '%')
+			if (*format == 'i')
 			{
-				format++;
-				ft_putchar('%');
+				
 			}
-			if (*format >= '0' && *format <=)
 		}
 		ft_putchar(*format);
 		format++;
 	}
-	va_end(argp);
 	return (1);
 }
 
@@ -91,7 +91,7 @@ int main(void)
 	//int m = 1546664;
 	//int c  = 13;
 	//char l[] = "nice work bro";
-	printf("this is a %d sign and this one %d\n", -2035065302, 15);
-	ft_printf("this is a %d sign and this one %d\n", -2035065302, 15);
+	printf("Bla Bla %c\n", );
+	ft_printf("Bla Bla %c\n", 0);
 	return (0);
 }
