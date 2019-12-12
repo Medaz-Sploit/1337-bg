@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 11:13:04 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/08/31 13:34:12 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/12 03:33:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(char *a, char *b)
-{
-	char temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-int		ft_strlen(char *str)
-{
-	int n;
-
-	n = 0;
-	while (*(str + n) != '\0')
-	{
-		n++;
-	}
-	return (n);
-}
+#include "ft_printf.h"
 
 char	*ft_strrev(char *str)
 {
@@ -40,7 +21,7 @@ char	*ft_strrev(char *str)
 	r = ft_strlen(str) - 1;
 	while (l < r)
 	{
-		ft_swap((str + l), (str + r));
+		ft_swap((int*)(str + l), (int*)(str + r));
 		l++;
 		r--;
 	}

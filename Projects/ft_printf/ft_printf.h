@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/03 18:09:20 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/12 01:23:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ char				*ft_strstr(char *str, char *to_find);
 int					ft_strcmp(char *s1, char *s2);
 char				*ft_strupcase(char *str);
 char				*ft_strlowcase(char *str);
+char				*ft_strrev(char *str);
+int 				ft_dectohex(int decimal);
+int 				ft_hextodec(int hex);
 
 #endif

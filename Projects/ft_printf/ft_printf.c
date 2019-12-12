@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/11 19:26:58 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/12 04:08:24 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ int ft_printf(const char *format, ...) // handle all convertions such as `p` `i`
 				format++;
 				d = va_arg(argp, int);
 				ft_putchar(d);
-			}
-			if (*format == 'i')
-			{
-				
-			}
+			}				
 		}
 		ft_putchar(*format);
 		format++;
@@ -89,9 +85,10 @@ int ft_printf(const char *format, ...) // handle all convertions such as `p` `i`
 int main(void)
 {
 	//int m = 1546664;
-	//int c  = 13;
+	int c  = 762862;
 	//char l[] = "nice work bro";
-	printf("Bla Bla %c\n", );
+	printf("Bla Bla %c\n", 0);
 	ft_printf("Bla Bla %c\n", 0);
+	ft_dectohex(c);
 	return (0);
 }

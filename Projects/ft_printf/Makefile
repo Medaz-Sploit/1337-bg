@@ -6,7 +6,7 @@
 #    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 19:14:28 by mazoukni          #+#    #+#              #
-#    Updated: 2019/12/03 19:18:50 by mazoukni         ###   ########.fr        #
+#    Updated: 2019/12/12 03:16:21 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ $(NAME):
 
 fclean:
 	rm -f $(NAME)
+	rm -f *.o
 
 clean:
 	rm -f *.o
