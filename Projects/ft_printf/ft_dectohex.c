@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dectohex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:12:26 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/12 04:10:13 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/12 23:36:19 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
  */
 #include "ft_printf.h"
 
-int ft_dectohex(int decimal)
+char *ft_dectohex(char format, size_t decimal)
 {
-	int remainder;
+	size_t remainder;
 	int i;
 	char *hex;
+	char r;
 
 	i = 0;
 	hex = malloc(17 * sizeof(char));
@@ -44,10 +45,12 @@ int ft_dectohex(int decimal)
 	hex[i] = '\0';
 	while (i >= 0)
 	{
-		ft_putchar(hex[i]);
+		if (format == 'x' || format == 'p')
+			r = ft_tolower(hex[i]);
+		else if (format == 'X')
+			r = hex[i];
+		ft_putchar(r);
 		i--;
 	}
-	ft_putchar('\n');
-	free(hex);
-	return (remainder);
+	return (hex);
 }

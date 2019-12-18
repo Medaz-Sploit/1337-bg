@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/12 04:08:24 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/13 00:39:35 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void flags(int *format, t_data my_data)
 
 
 
-int ft_printf(const char *format, ...) // handle all convertions such as `p` `i` `u` `x` `X` `%`
+int ft_printf(const char *format, ...) // handle all convertions such as `p` `i` `u` `x` `X` `%`  %[flags][min field width][precision][length]conversion specifier
 {
-
+	
 	va_list argp;
-	int d;
+	size_t d;
 	char *p;
 	va_start(argp, format);
 	while (*format)
@@ -59,22 +59,37 @@ int ft_printf(const char *format, ...) // handle all convertions such as `p` `i`
 			format++;
 			if (*format == 'd' || *format == 'i')
 			{
+				ft_putstr(ft_itoa(va_arg(argp, int)));
 				format++;
-				d = va_arg(argp, int);
-				ft_putstr(ft_itoa(d));
 			}
 			if (*format == 's')
 			{
-				format++;
 				p = va_arg(argp, char*);
 				ft_putstr(p);
+				format++;
 			}
 			if (*format == 'c')
 			{
+				ft_putchar(va_arg(argp, int));
 				format++;
-				d = va_arg(argp, int);
-				ft_putchar(d);
-			}				
+			}
+			if (*format == 'x')
+			{
+				ft_dectohex(*format, va_arg(argp, unsigned int));
+				format++;
+			}
+			if (*format == 'p')
+			{
+				ft_putstr("0x");
+				d = va_arg(argp, size_t);
+				ft_dectohex(*format , d);
+				format++;
+			}
+			if (*format == 'X')
+			{
+				ft_dectohex(*format, va_arg(argp, unsigned int));
+				format++;
+			}
 		}
 		ft_putchar(*format);
 		format++;
@@ -85,10 +100,9 @@ int ft_printf(const char *format, ...) // handle all convertions such as `p` `i`
 int main(void)
 {
 	//int m = 1546664;
-	int c  = 762862;
-	//char l[] = "nice work bro";
-	printf("Bla Bla %c\n", 0);
-	ft_printf("Bla Bla %c\n", 0);
-	ft_dectohex(c);
+	//int c  = 762862;
+	char l[] = "nice  jjjdfsdfgskhwor";
+	printf("Bla Bla %p\n",l);
+	ft_printf("Bla Bla %p\n", l);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/12 01:23:30 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/12 23:31:29 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int					ft_strcmp(char *s1, char *s2);
 char				*ft_strupcase(char *str);
 char				*ft_strlowcase(char *str);
 char				*ft_strrev(char *str);
-int 				ft_dectohex(int decimal);
+char 				*ft_dectohex(char format, size_t decimal);
 int 				ft_hextodec(int hex);
 
 #endif
