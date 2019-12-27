@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/12 23:31:29 by mazoukni         ###   ########.fr       */
+/*   Updated: 2019/12/26 20:39:45 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdarg.h>
+
+typedef struct s_data{
+	int *moin;
+	int *zero;
+	int *precision;
+	int *star;
+}t_data; 
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, int n);
@@ -69,5 +76,11 @@ char				*ft_strlowcase(char *str);
 char				*ft_strrev(char *str);
 char 				*ft_dectohex(char format, size_t decimal);
 int 				ft_hextodec(int hex);
-
+int					print_unicode(char const format, va_list argp);
+int					print_hex(char const format, va_list argp);
+int					print_char(char const format, va_list argp);
+int					print_char(char const format, va_list argp);
+int					print_string(char const format, va_list argp);
+int					print_decint(char const format, va_list argp);
+int					print_pointer(char const format, va_list argp);
 #endif
