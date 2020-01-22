@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_decint.c                                     :+:      :+:    :+:   */
+/*   check_zero.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 19:55:47 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:43:53 by mazoukni         ###   ########.fr       */
+/*   Created: 2020/01/21 04:05:51 by mazoukni          #+#    #+#             */
+/*   Updated: 2020/01/21 04:27:35 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_decint(char const format, va_list argp)
+int check_zero(char const *format, va_list argp)
 {
-    ft_putstr(ft_itoa(va_arg(argp, int)));
-	format++;
-    return (1);
+    int i;
+
+    i = 0;
+    if (format[i] == '0' || (format[i] >= '0' && format[i] ''))
+    {
+        
+    }    
 }

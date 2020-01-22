@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:39:45 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/21 04:48:55 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@
 # include <string.h>
 # include <stdarg.h>
 
-typedef struct s_data{
-	int *moin;
-	int *zero;
-	int *precision;
-	int *star;
-}t_data; 
+typedef struct s_flag{ // existe ou n'existe pas  && it's value // %-*.0d, 12 , 23
+	int value;
+	int state;
+}			t_flag;
+
+typedef struct s_flags
+{
+	t_flag width;
+	t_flag prec;
+	t_flag zero;
+}				t_flags;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, int n);
