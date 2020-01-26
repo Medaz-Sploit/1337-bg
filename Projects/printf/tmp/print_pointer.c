@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_zero.c                                       :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 04:05:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/21 04:27:35 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/12/26 19:57:49 by mazoukni          #+#    #+#             */
+/*   Updated: 2020/01/26 18:21:35 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int check_zero(char const *format, va_list argp)
+void    print_pointer(char *format, va_list argp, t_flags wpz, int *a)
 {
-    int i;
-
-    i = 0;
-    if (format[i] == '0' || (format[i] >= '0' && format[i] ''))
-    {
-        
-    }    
+    size_t d;
+    
+    ft_putstr("0x");
+	d = va_arg(argp, size_t);
+	ft_dectohex(*format , d);
+	format++;
 }

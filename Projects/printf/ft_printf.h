@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/21 04:48:55 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:22:45 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,15 @@ char				*ft_strlowcase(char *str);
 char				*ft_strrev(char *str);
 char 				*ft_dectohex(char format, size_t decimal);
 int 				ft_hextodec(int hex);
-int					print_unicode(char const format, va_list argp);
-int					print_hex(char const format, va_list argp);
-int					print_char(char const format, va_list argp);
-int					print_char(char const format, va_list argp);
-int					print_string(char const format, va_list argp);
-int					print_decint(char const format, va_list argp);
-int					print_pointer(char const format, va_list argp);
+//void				print_unicode(char *format, va_list argp, t_flags wpz, int *a);
+//void				print_hex(char *format, va_list argp, t_flags wpz, int *a);
+//void				print_char(char *format, va_list argp, t_flags wpz, int *a);
+//void				print_string(char *format, va_list argp, t_flags wpz, int *a);
+void 				print_decint(char *format, va_list argp, t_flags wpz, int *a);
+//void				print_pointer(char *format, va_list argp, t_flags wpz, int *a);
+t_flag 				fetch_zero(char *format, va_list argp);
+t_flag 				fetch_prec(char *format, va_list argp);
+t_flag 				fetch_width(char *format, va_list argp);
+char const 			*choose_flag(char *format, va_list argp , int *a);
+
 #endif

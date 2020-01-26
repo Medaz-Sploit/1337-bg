@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_string.c                                     :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 19:46:32 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:43:13 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 15:51:02 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/15 01:08:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int print_string(char const format, va_list argp)
+int	ft_isprint(int c)
 {
-    size_t d;
-    
-    ft_putstr("0x");
-	d = va_arg(argp, size_t);
-	ft_dectohex(*format , d);
-	format++;
-    return (1);
+	while (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

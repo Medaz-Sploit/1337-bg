@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 19:49:39 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:43:22 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 15:39:51 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/14 22:53:28 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int print_char(char const format, va_list argp)
+int	ft_isascii(int c)
 {
-    ft_putchar(va_arg(argp, int));
-	format++;
-    return (1);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

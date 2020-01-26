@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:40:23 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/21 07:11:00 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:19:09 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_flags ft_reshape(t_flags wpz)
     shape.prec.state = 0;
     if (wpz.prec.state)
     {
+        shape.prec = ft_asso(shape.prec, wpz.prec.value);
         shape.zero = ft_asso(shape.zero, wpz.prec.value);
         if (wpz.zero.state)
             shape.width = ft_asso(shape.width, wpz.zero.value);
@@ -38,9 +39,10 @@ t_flags ft_reshape(t_flags wpz)
         shape.zero = ft_asso(shape.zero, wpz.width.value);
     else if (wpz.width.state)
         shape.width = ft_asso(shape.width, wpz.width.value);
+    return (shape);
 }
 
-char const *choose_flag(char const *format, va_list argp , int *a) // %0987.12d
+char const *choose_flag(char *format, va_list argp , int *a) // %0987.12d
 {
     t_flags wpz;
     
@@ -51,13 +53,13 @@ char const *choose_flag(char const *format, va_list argp , int *a) // %0987.12d
     while (!ft_isalpha(*format))
         format++;
     if (*format == 'd' || *format == 'i' || *format == 'c')
-        print_decint(format, argp, ft_reshape(wpz), a);
-    else if (*format == 'X' || *format == 'x' || *format == 'u')
+        print_decint((char*)format, argp, ft_reshape(wpz), a);
+    /*else if (*format == 'X' || *format == 'x' || *format == 'u')
         print_hex(format, argp, ft_reshape(wpz), a);
     else if (*format == 'p')
         print_pointer(format, argp, wpz, a);
     else if (*format == 's')
-        print_string(format, argp, wpz, a);
+        print_string(format, argp, wpz, a);*/
     format++;
     return (format);  
 }

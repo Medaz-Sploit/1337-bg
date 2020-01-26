@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 19:57:49 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:44:03 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/12 15:31:46 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/12/03 17:49:03 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_pointer(char const format, va_list argp)
+int	ft_isalnum(int c)
 {
-    size_t d;
-    
-    ft_putstr("0x");
-	d = va_arg(argp, size_t);
-	ft_dectohex(*format , d);
-	format++;
-    return (1);
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+		return (1);
+	return (0);
 }

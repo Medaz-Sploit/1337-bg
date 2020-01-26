@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fetch.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 04:52:44 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/21 06:00:34 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:20:27 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flag fetch_width(char const *format, va_list argp) // %-*d, 3, 1 //
+t_flag fetch_width(char *format, va_list argp) // %-*d, 3, 1 //
 {
     t_flag width;
     
@@ -40,7 +40,7 @@ t_flag fetch_width(char const *format, va_list argp) // %-*d, 3, 1 //
     return (width);
 }
 
-t_flag fetch_prec(char const *format, va_list argp)
+t_flag fetch_prec(char *format, va_list argp)
 {
     t_flag prec;
     
@@ -60,7 +60,7 @@ t_flag fetch_prec(char const *format, va_list argp)
     return (prec);
 }
 
-t_flag fetch_zero(char const *format, va_list argp)
+t_flag fetch_zero(char *format, va_list argp)
 {
     t_flag zero;
     
@@ -71,7 +71,7 @@ t_flag fetch_zero(char const *format, va_list argp)
         if (*format == '*')
             zero.value = va_arg(argp, int);
         else
-            zero.value = ft_atoi((char)*format); 
+            zero.value = ft_atoi((char*)format); 
     }
     else
         zero.state = 0;

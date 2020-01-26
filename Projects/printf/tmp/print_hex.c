@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 19:51:46 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:43:30 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:21:07 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_hex(char const format, va_list argp)
+void	print_hex(char *format, va_list argp, t_flags wpz, int *a)
 {
     if (format == 'x')
     {
@@ -24,5 +24,4 @@ int print_hex(char const format, va_list argp)
         ft_dectohex(*format, va_arg(argp, unsigned int));
 	    format++;
     }
-    return (1);
 }

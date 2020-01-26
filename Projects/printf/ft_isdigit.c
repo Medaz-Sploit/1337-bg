@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unicod.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 19:59:54 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/12/26 20:43:45 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/10/11 23:43:18 by mazoukni          #+#    #+#             */
+/*   Updated: 2019/10/14 16:14:03 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int print_unicod(char const format, va_list argp)
+int	ft_isdigit(int c)
 {
-    ft_putstr(ft_itoa(va_arg(argp, unsigned int)));
-	format++;
-    return (1);
+	while (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }
