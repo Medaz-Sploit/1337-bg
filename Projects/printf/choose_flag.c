@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:40:23 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/26 18:19:09 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:20:14 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ t_flags ft_reshape(t_flags wpz)
             shape.width = ft_asso(shape.width, wpz.width.value);
     }
     else if (wpz.zero.state)
-        shape.zero = ft_asso(shape.zero, wpz.width.value);
+        shape.zero = ft_asso(shape.zero, wpz.zero.value);
     else if (wpz.width.state)
         shape.width = ft_asso(shape.width, wpz.width.value);
+    
     return (shape);
 }
 
@@ -54,6 +55,7 @@ char const *choose_flag(char *format, va_list argp , int *a) // %0987.12d
         format++;
     if (*format == 'd' || *format == 'i' || *format == 'c')
         print_decint((char*)format, argp, ft_reshape(wpz), a);
+        
     /*else if (*format == 'X' || *format == 'x' || *format == 'u')
         print_hex(format, argp, ft_reshape(wpz), a);
     else if (*format == 'p')

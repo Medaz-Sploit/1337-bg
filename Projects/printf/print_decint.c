@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 19:55:47 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/26 18:17:27 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/27 19:03:38 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	long integer;
 	int length;
 	int sign;
-
+	
 	sign = 0;
-	integer = va_arg(argp, int);        // %12.12d , 12 , so we need to know how many digits we have 
+	integer = va_arg(argp, int);        // %
 	length = *format == 'c' ? 1 : ft_nbrlen(integer);
 	if (wpz.width.state && wpz.width.value > 0)
 	{
@@ -54,13 +54,19 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	if (wpz.zero.state)
 	{
 		length = *format == 'c' ? 1 : ft_nbrlen(integer) + sign;
-		while (wpz.zero.value > length)
+		if (wpz.zero.value < 0)
+		{
+			while (length != 0)
+				ft_putchar(' ' + 0 * length-- + 0 * (*a)++);
+		}
+		// printf("vv %d\n", wpz.zero.value);
+		while (wpz.zero.value > length) // %0-5d, -42
 			ft_putchar('0' + 0 * length++ + 0 * (*a)++);
 	}
 	if (*format == 'c')
 		ft_putchar(integer + 0 * (*a)++);
-	else
-		ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
+	
+	ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
 	if (wpz.width.state && wpz.width.value < 0)
 	{
 		length = *format == 'c' ? 1 : ft_nbrlen(integer) + sign;

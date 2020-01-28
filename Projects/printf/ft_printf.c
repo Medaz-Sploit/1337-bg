@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/26 18:29:21 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:57:17 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int ft_printf(const char *format, ...)
 	return (1);
 }
 
-/*int main(void)
+int main(void)
 {
-	printf("%*.4d|\n",5, 454);
-	ft_printf("%*.4d|\n",5, 454);
+	ft_printf("%0*d\n",-5, -42);
+	printf("%0*d\n",-5, -42);
 	return (0);
-}*/
+}
