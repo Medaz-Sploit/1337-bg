@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 19:55:47 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/27 19:03:38 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/30 22:05:17 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	if (wpz.width.state && wpz.width.value > 0)
 	{
 		if (wpz.zero.state && wpz.zero.value > length)
+		{
+			if(integer < 0)
+				wpz.width.value -= 1;
 			length = wpz.zero.value;
+		}
 		while (wpz.width.value > length)
 			ft_putchar(' ' + 0 * wpz.width.value-- + 0 * (*a)++);
 	}
@@ -53,13 +57,7 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	}
 	if (wpz.zero.state)
 	{
-		length = *format == 'c' ? 1 : ft_nbrlen(integer) + sign;
-		if (wpz.zero.value < 0)
-		{
-			while (length != 0)
-				ft_putchar(' ' + 0 * length-- + 0 * (*a)++);
-		}
-		// printf("vv %d\n", wpz.zero.value);
+		length = *format == 'c' ? 1 : ft_nbrlen(integer);
 		while (wpz.zero.value > length) // %0-5d, -42
 			ft_putchar('0' + 0 * length++ + 0 * (*a)++);
 	}
@@ -67,6 +65,12 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 		ft_putchar(integer + 0 * (*a)++);
 	
 	ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
+	if (wpz.zero.value < 0)
+	{
+		wpz.width.value -= 1;
+		while (-wpz.zero.value > length)
+			ft_putchar(' ' + 0 * length++ + 0 * (*a)++);
+	}
 	if (wpz.width.state && wpz.width.value < 0)
 	{
 		length = *format == 'c' ? 1 : ft_nbrlen(integer) + sign;
