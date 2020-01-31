@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_decint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 19:55:47 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/30 22:05:17 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/01/31 00:14:55 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,7 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	if (wpz.width.state && wpz.width.value > 0)
 	{
 		if (wpz.zero.state && wpz.zero.value > length)
-		{
-			if(integer < 0)
-				wpz.width.value -= 1;
 			length = wpz.zero.value;
-		}
 		while (wpz.width.value > length)
 			ft_putchar(' ' + 0 * wpz.width.value-- + 0 * (*a)++);
 	}
@@ -57,19 +53,21 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	}
 	if (wpz.zero.state)
 	{
-		length = *format == 'c' ? 1 : ft_nbrlen(integer);
-		while (wpz.zero.value > length) // %0-5d, -42
+		length = *format == 'c' ? 1 : ft_nbrlen(integer) + sign;
+		while (wpz.zero.value > length)
 			ft_putchar('0' + 0 * length++ + 0 * (*a)++);
 	}
 	if (*format == 'c')
 		ft_putchar(integer + 0 * (*a)++);
-	
-	ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
+	if (wpz.zero.value == 0)
+		ft_putchar(' ' + 0 * (*a)++);
+	else
+		ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
 	if (wpz.zero.value < 0)
 	{
-		wpz.width.value -= 1;
-		while (-wpz.zero.value > length)
-			ft_putchar(' ' + 0 * length++ + 0 * (*a)++);
+		if (!(wpz.prec.state))
+			while (-wpz.zero.value > length)
+				ft_putchar(' ' + 0 * length++ + 0 * (*a)++);
 	}
 	if (wpz.width.state && wpz.width.value < 0)
 	{
