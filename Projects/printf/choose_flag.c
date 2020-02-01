@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:40:23 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/27 17:20:14 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/01 19:28:41 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_flags ft_reshape(t_flags wpz)
     shape.zero.state = 0;
     shape.prec.state = 0;
     if (wpz.prec.state)
+        shape.prec = ft_asso(shape.prec, wpz.prec.value);
+    if (wpz.prec.state && wpz.prec.value > -1)
     {
         shape.prec = ft_asso(shape.prec, wpz.prec.value);
         shape.zero = ft_asso(shape.zero, wpz.prec.value);
@@ -35,6 +37,8 @@ t_flags ft_reshape(t_flags wpz)
         else if (wpz.width.state)
             shape.width = ft_asso(shape.width, wpz.width.value);
     }
+    else if (wpz.prec.state && wpz.prec.value < 0 && wpz.zero.state && wpz.zero.value < 0)
+        shape.width = ft_asso(shape.width, wpz.zero.value);
     else if (wpz.zero.state)
         shape.zero = ft_asso(shape.zero, wpz.zero.value);
     else if (wpz.width.state)

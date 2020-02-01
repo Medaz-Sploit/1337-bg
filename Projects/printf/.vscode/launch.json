@@ -6,12 +6,12 @@
     "configurations": [
         {
             "name": "gcc build and debug active file",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
-            "program": "/Users/mazoukni/1337-bg/Projects/printf/a.out",
+            "program": "/Users/mac/big/Projects/printf/a.out",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "/Users/mazoukni/1337-bg/Projects/printf/",
+            "cwd": "/Users/mac/big/Projects/printf/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
