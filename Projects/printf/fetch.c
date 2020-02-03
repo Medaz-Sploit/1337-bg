@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 04:52:44 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/26 18:20:27 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/01 23:30:00 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ t_flag fetch_width(char *format, va_list argp) // %-*d, 3, 1 //
         format++;
         width.state = 1;
         if (*format == '*')
-            width.value = va_arg(argp, int) * (-1);
+        {   
+            width.value = va_arg(argp, int);
+            if (width.value > 0)
+                width.value *= -1;
+        }
         else
-            width.value = ft_atoi((char*)format) * (-1);
+            width.value = ft_atoi((char*)format) * -1;
     }
     else if (ft_isdigit(*format))
     {

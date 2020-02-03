@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/01 19:32:40 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/01 23:33:50 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int ft_printf(const char *format, ...)
 		ft_putchar(*(format++));
 		a++;
 	}
-	return (1);
+	return (a);
 }
 
-/*int main(void)
-{
-	ft_printf("%0*.*d|\n", -10, -5, 42);
-	printf("%0*.*d|\n",-10,  -5, 42);
-	return (0);
-}*/
+// int main(void)
+// {
+// 	ft_printf("%-5d|\n", 42);
+// 	printf("%-5d|\n",42);
+// 	return (0);
+// }
 
        

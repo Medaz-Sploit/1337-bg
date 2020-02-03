@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:31:35 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/09/10 10:45:10 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/02 00:30:46 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(long nb)
 {
 	long n;
 

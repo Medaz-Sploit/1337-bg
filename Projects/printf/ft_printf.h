@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/01/27 16:47:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/02 02:59:07 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdarg.h>
+#include <limits.h>
 
 typedef struct s_flag{ // existe ou n'existe pas  && it's value // %-*.0d, 12 , 23
 	int value;
@@ -51,7 +52,7 @@ char				*ft_strdup(const char *s1);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlcpy(char *dst, const char *str, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t n);
-size_t				ft_strlen(const char *str);
+int				ft_strlen(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *str, const char *to_find,
 				size_t len);
@@ -81,15 +82,16 @@ char				*ft_strlowcase(char *str);
 char				*ft_strrev(char *str);
 char 				*ft_dectohex(char format, size_t decimal);
 int 				ft_hextodec(int hex);
-//void				print_unicode(char *format, va_list argp, t_flags wpz, int *a);
-//void				print_hex(char *format, va_list argp, t_flags wpz, int *a);
-//void				print_char(char *format, va_list argp, t_flags wpz, int *a);
-//void				print_string(char *format, va_list argp, t_flags wpz, int *a);
+void				print_hex(char *format, va_list argp, t_flags wpz, int *a);
+void				print_string(va_list argp, t_flags wpz, int *a);
 void 				print_decint(char *format, va_list argp, t_flags wpz, int *a);
-//void				print_pointer(char *format, va_list argp, t_flags wpz, int *a);
+void				print_pointer(va_list argp, t_flags wpz, int *a);
 t_flag 				fetch_zero(char *format, va_list argp);
 t_flag 				fetch_prec(char *format, va_list argp);
 t_flag 				fetch_width(char *format, va_list argp);
 char const 			*choose_flag(char *format, va_list argp , int *a);
+int 				ft_nbrlen(long integer);
+void				ft_hexatoi(size_t u, char a);
+int 				ft_hexlen(size_t integer);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 04:40:23 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/01 19:28:41 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/02 02:12:47 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ char const *choose_flag(char *format, va_list argp , int *a) // %0987.12d
         format++;
     if (*format == 'd' || *format == 'i' || *format == 'c')
         print_decint((char*)format, argp, ft_reshape(wpz), a);
-        
-    /*else if (*format == 'X' || *format == 'x' || *format == 'u')
+    else if (*format == 'X' || *format == 'x' || *format == 'u')
         print_hex(format, argp, ft_reshape(wpz), a);
     else if (*format == 'p')
-        print_pointer(format, argp, wpz, a);
+        print_pointer(argp, wpz, a);
     else if (*format == 's')
-        print_string(format, argp, wpz, a);*/
+        print_string(argp, wpz, a);
     format++;
     return (format);  
 }
