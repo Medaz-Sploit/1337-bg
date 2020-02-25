@@ -1,2 +1,2 @@
 # 1337-bg
-All Projects &amp; Pool of 1337
+All Projects of 1337
