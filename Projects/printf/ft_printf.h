@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:55:34 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/02 02:59:07 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/12 05:36:23 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdarg.h>
-#include <limits.h>
+# include <limits.h>
 
-typedef struct s_flag{ // existe ou n'existe pas  && it's value // %-*.0d, 12 , 23
+typedef struct		s_flag{
 	int value;
 	int state;
-}			t_flag;
+}					t_flag;
 
-typedef struct s_flags
+typedef struct		s_flags
 {
 	t_flag width;
 	t_flag prec;
 	t_flag zero;
-}				t_flags;
+}					t_flags;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, int n);
@@ -70,7 +70,7 @@ char				*ft_strmapi(char *s, char(*f)(unsigned int, char));
 void				insert_element(char *str, char **tab, int i, char c);
 char				*ft_itoa(int nb);
 void				ft_putchar(char c);
-void				ft_putnbr(int nb);
+void				ft_putnbr(long nb);
 void				ft_swap(int *a, int *b);
 void				ft_putstr(char *str);
 char				*ft_strcpy(char *dest, char *src);
@@ -80,18 +80,20 @@ int					ft_strcmp(char *s1, char *s2);
 char				*ft_strupcase(char *str);
 char				*ft_strlowcase(char *str);
 char				*ft_strrev(char *str);
-char 				*ft_dectohex(char format, size_t decimal);
-int 				ft_hextodec(int hex);
+char				*ft_dectohex(char format, size_t decimal);
+int					ft_hextodec(int hex);
 void				print_hex(char *format, va_list argp, t_flags wpz, int *a);
 void				print_string(va_list argp, t_flags wpz, int *a);
-void 				print_decint(char *format, va_list argp, t_flags wpz, int *a);
+void				print_decint(char *format, va_list argp, t_flags wpz,
+int *a);
 void				print_pointer(va_list argp, t_flags wpz, int *a);
-t_flag 				fetch_zero(char *format, va_list argp);
-t_flag 				fetch_prec(char *format, va_list argp);
-t_flag 				fetch_width(char *format, va_list argp);
-char const 			*choose_flag(char *format, va_list argp , int *a);
-int 				ft_nbrlen(long integer);
+t_flag				fetch_zero(char *format, va_list argp);
+t_flag				fetch_prec(char *format, va_list argp);
+t_flag				fetch_width(char *format, va_list argp);
+char const			*choose_flag(char *format, va_list argp, int *a);
+int					ft_nbrlen(long integer);
 void				ft_hexatoi(size_t u, char a);
-int 				ft_hexlen(size_t integer);
+int					ft_hexlen(size_t integer);
+void				print_prec(t_flags wpz, int *a);
 
 #endif

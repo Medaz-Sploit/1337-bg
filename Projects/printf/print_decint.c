@@ -6,16 +6,16 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/26 19:55:47 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/02 02:13:23 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/12 05:47:47 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_nbrlen(long integer)
+int		ft_nbrlen(long integer)
 {
 	int length;
-	
+
 	length = 0;
 	if (integer == 0)
 		return (1);
@@ -26,15 +26,15 @@ int ft_nbrlen(long integer)
 		integer /= 10;
 		length++;
 	}
-	return length;
+	return (length);
 }
 
-void print_decint(char *format, va_list argp, t_flags wpz, int *a)
+void	print_decint(char *format, va_list argp, t_flags wpz, int *a)
 {
-	long integer;
-	int length;
-	int sign;
-	
+	long	integer;
+	int		length;
+	int		sign;
+
 	sign = 0;
 	integer = va_arg(argp, int);
 	length = *format == 'c' ? 1 : ft_nbrlen(integer);
@@ -60,7 +60,7 @@ void print_decint(char *format, va_list argp, t_flags wpz, int *a)
 	}
 	if (*format == 'c')
 		ft_putchar(integer + 0 * (*a)++);
-	else
+	else if (!(wpz.prec.state && wpz.prec.value == 0 && integer == 0))
 		ft_putnbr(integer + 0 * (*a += ft_nbrlen(integer)));
 	if (wpz.zero.value < 0)
 	{

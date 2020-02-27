@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:30:33 by mazoukni          #+#    #+#             */
-/*   Updated: 2019/08/31 13:31:36 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:42:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include "ft_printf.h"
 
 void	ft_putstr(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 23:37:39 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/02 00:33:30 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:25:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_hexatoi(size_t u, char a)
 	{
 		c = tab[(u / div) % 16];
 		write(1, &c, 1);
-		div /= 16;		
+		div /= 16;
 	}
 }

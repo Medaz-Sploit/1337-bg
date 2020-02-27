@@ -6,11 +6,11 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/25 19:31:35 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/02 00:30:46 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/06 14:42:22 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include "ft_printf.h"
 
 void	ft_putnbr(long nb)
 {
