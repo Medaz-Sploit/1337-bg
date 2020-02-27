@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 15:37:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/21 21:30:31 by mazoukni         ###   ########.fr       */
+/*   Created: 2019/08/28 16:30:33 by mazoukni          #+#    #+#             */
+/*   Updated: 2020/02/06 14:42:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putstr(char *str)
 {
-	size_t	i;
+	int n;
 
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
+	n = 0;
+	while (*(str + n) != '\0')
+	{
+		ft_putchar(*(str + n));
+		n++;
+	}
 }
