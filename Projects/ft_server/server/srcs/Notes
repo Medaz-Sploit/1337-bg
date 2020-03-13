@@ -1,0 +1,112 @@
+# Setup mysql
+
+$ wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb
+$ DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.13-1_all.deb
+$ apt-get -qq update
+$ DEBIAN_FRONTEND=noninteractive apt-get -y -qq install mysql-server 
+ 
+
+# Setup Wordpress 
+
+$ tar xzf latest.tar.gz
+$ mv wordpress/* /var/www/html
+$ chown -R www-data:www-data /var/www/html
+$ chmod -R 755 /var/www/html
+$ rm -rf wordpress
+$ cd /var/www/html/wordpress/public_html
+$ mv wp-config-sample.php wp-config.php
+$ vi wp-config.php
+``` 
+define('DB_NAME', 'wordpress_db');
+define('DB_USER', 'wpuser');
+define('DB_PASSWORD', 'Passw0rd!');
+define('AUTH_KEY',         ':X?m||*fW3DGvwh1e5vB!> 00H+SRtx.oI6|SX|wh?AM:T]nJ+qh/j x-_6%G>Ki');
+define('SECURE_AUTH_KEY',  'pN*V:>x,$z1FY;D(^R+9%d~|ktoovbqLD0+04:12Cry*Ns]|e[#N)p[cFg+.+KI`');
+define('LOGGED_IN_KEY',    '+7fr6RWp9J27*>o>TupwSbTe(n6@L8!r&LZ=|{htrI%vu+cNNdr)+c+@Emii_d&=');
+define('NONCE_KEY',        '=I8dAKCe=oS#;Xqflop^+c!8?1oC4u3pk$ifNdUjVWwF2AE++O &K^,dhnZB[3`+');
+define('AUTH_SALT',        '|!L0Iucc5hU+6R~%=RnZWeUD=s@;K:q|K2o>1uNln;+0-t|c8M/0m[Qz%d^*-O!P');
+define('SECURE_AUTH_SALT', 'd@Q!(gtO*wOKL)@[8]/]fksvv{&>L0oJE]PmpLk,zdtn!Wl)f|k.Gt^C-ZV2@+G?');
+define('LOGGED_IN_SALT',   'I{wnyCm+?k*u%M#{jwy+7qS}wP2~&zP+ap)I<0oBp<0)P_SM82Nv?i4ypI{# neN');
+define('NONCE_SALT',       '8cv}cK(W797]-K7$_ti~#]HjXGX5v<<hZaK|)a(e|+(S,kQMb0F+1QLsDw+kaHkD');
+
+```
+# Configure php7.3-fpm
+
+$ vim /etc/php/7.3/fpm/pool.d/www.conf
+## chenge those line;
+;listen = /var/run/php5-fpm.sock
+listen = 127.0.0.1:9000
+
+
+# Create Mysql db and user
+
+$ echo "CREATE DATABASE wordpress_db;\nGRANT ALL ON wordpress_db.* TO 'wpuser'@'localhost' IDENTIFIED BY 'pass' WITH GRANT OPTION;\nFLUSH PRIVILEGES;\nexit\n" > /db.Mysql
+$ mysql -u root < /db.Mysql
+
+# Configure Nginx for Wordpress
+
+$ mkdir -p /var/www/html/wordpress
+--> this need to change: $ vim /etc/nginx/sites-available/wordpress.conf
+```
+server {
+            listen 80;
+            root /var/www/html/wordpress;
+            index index.php index.html;
+            server_name localhost;
+
+	        access_log /var/log/nginx/access.log;
+    	    error_log /var/log/nginx/error.log;
+
+            location / {
+                        autoindex on;
+                        try_files $uri $uri/ =404;
+            }
+
+            location ~ \.php$ {
+                        include snippets/fastcgi-php.conf;
+                        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+            }
+            
+            location ~ /\.ht {
+                         deny all;
+            }
+
+            location = /favicon.ico {
+                         log_not_found off;
+                         access_log off;
+            }
+
+            location = /robots.txt {
+                         allow all;
+                         log_not_found off;
+                         access_log off;
+           }
+       
+            location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                         expires max;
+                         log_not_found off;
+           }
+} 
+
+```
+
+$ cd /etc/nginx/sites-enabled
+$ ln -s ../sites-available/wordpress.conf .
+$ nginx -t 
+$ service nginx restart
+
+# Configure phpmyadmin
+
+$ vim /var/www/html/phpmyadmin/config.inc.php
+``` 
+...
+/**
+ * This is needed for cookie based authentication to encrypt password in
+ * cookie. Needs to be 32 chars long.
+ */
+$cfg['blowfish_secret'] = '$2a$07$1MDEWBveq1Op7vIc8iGN7Op0MGj4D/ycAXuUNTc7FDs63.WOqiWpe'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+
+/**
+...
+
+```

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 21:26:19 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/28 00:57:56 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:56:06 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,4 @@ int		ft_printf(const char *format, ...)
 		va_end(argp);
 	}
 	return (a);
-}
-int main()
-{
-
-	ft_printf("%3.2x %d %s %c %u %i %p %--%\n",231,0,NULL,9,-200,0,(void *)0); 
-	printf("%3.2x %d %s %c %u %i %p %--%\n",231,0,NULL,9,-200,0,(void *)0); 
-	return (0);
 }

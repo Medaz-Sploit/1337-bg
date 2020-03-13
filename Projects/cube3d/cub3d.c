@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 16:29:59 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/02/27 14:48:40 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:46:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
-}
-
-void	draw()
-{
-	int mlx[64][64] = 
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	
 }
+
+get_next_line();
 
 int main(void)
 {
@@ -36,6 +32,5 @@ int main(void)
 	int j = 240;
 	while (i < 290)
 		mlx_pixel_put(mlx_ptr, win_ptr, i++, j, 0xFCAFFF);
-//	mlx_key_hook(win_ptr, deal_key, (void *)0);
 	mlx_loop(mlx_ptr);
 }

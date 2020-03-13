@@ -43,7 +43,6 @@ int main(void)
 {
 	int fd;
 	char *line;
-//	int	returned;
 
 	line = NULL;
 	fd = open("kalul", O_RDONLY);
