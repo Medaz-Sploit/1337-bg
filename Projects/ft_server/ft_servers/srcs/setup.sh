@@ -6,7 +6,7 @@
 #    By: mazoukni <mazoukni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 05:19:07 by mazoukni          #+#    #+#              #
-#    Updated: 2020/10/20 06:02:33 by mazoukni         ###   ########.fr        #
+#    Updated: 2020/10/23 06:12:31 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,11 @@ mysql -u root < /db.Mysql
 mkdir /var/www/html/phpmyadmin
 tar xzf phpMyAdmin-4.9.0.1-english.tar.gz --strip-components=1 -C /var/www/html/phpmyadmin
 mv /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+mv /config.inc.php /var/www/html/phpmyadmin/config.inc.php
 chmod 660 /var/www/html/phpmyadmin/config.inc.php
 chown -R www-data:www-data /var/www/html/phpmyadmin
+mysql < /var/www/html/phpmyadmin/sql/create_tables.sql -u root
+echo '\n'
 
 # Setup wordpress
 # wp-admin pass : Cec33qiO1VfRNBS3t@
@@ -41,11 +44,19 @@ chmod -R 755 /var/www/html
 rm -rf wordpress
 cd /var/www/html
 mv wp-config-sample.php wp-config.php
+mv /wp-config.php /var/www/html/wp-config.php
+mysql -u root wordpress < /wp.sql
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+mv wp-cli.phar /usr/local/bin/wp
+cd /var/www/html
+wp core config --dbname=wordpress_db --dbuser=wpuser --dbpass=pass --allow-root --path=/var/www/html/
+wp core install --url="192.168.99.102" --title="Medaz-Sploit" --admin_user="medaz" --admin_password="Cec33qiO1VfRNBS3t@" --admin_email="medaz@medaz.com" --allow-root --path=/var/www/html
 
 # Configure Nginx for wordpress
 
 cd /etc/nginx/sites-enabled
-ln -s ../sites-available/default .
 nginx -t
 service php7.3-fpm start
+service nginx start
 bash
