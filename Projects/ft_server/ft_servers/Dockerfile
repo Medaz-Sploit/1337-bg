@@ -24,5 +24,8 @@ COPY $PWD/srcs/default /etc/nginx/sites-enabled/
 COPY $PWD/srcs/wp-config.php /wp-config.php
 COPY $PWD/srcs/config.inc.php /config.inc.php
 COPY $PWD/srcs/wp.sql /wp.sql
+COPY $PWD/srcs/ssl-params.conf /ssl-params.conf
+COPY $PWD/srcs/nginx-selfsigned.key /etc/ssl/private/nginx-selfsigned.key
+COPY $PWD/srcs/nginx-selfsigned.crt /etc/ssl/certs/nginx-selfsigned.crt
 
 CMD [ "sh", "/setup.sh" ]

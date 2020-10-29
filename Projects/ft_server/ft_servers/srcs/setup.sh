@@ -51,7 +51,12 @@ chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 cd /var/www/html
 wp core config --dbname=wordpress_db --dbuser=wpuser --dbpass=pass --allow-root --path=/var/www/html/
-wp core install --url="192.168.99.102" --title="Medaz-Sploit" --admin_user="medaz" --admin_password="Cec33qiO1VfRNBS3t@" --admin_email="medaz@medaz.com" --allow-root --path=/var/www/html
+wp core install --url="127.0.0.1" --title="Medaz-Sploit" --admin_user="medaz" --admin_password="medazpass" --admin_email="medaz@medaz.com" --allow-root --path=/var/www/html
+
+# Setup SSL encryption
+
+echo "ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;\nssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;" > /etc/nginx/snippets/self-signed.conf
+mv /ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 
 # Configure Nginx for wordpress
 
