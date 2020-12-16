@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2020/12/10 10:53:12 by mazoukni         ###   ########.fr       */
+/*   Updated: 2020/12/15 13:23:06 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define TILE_SIZE 32
 # define PI 3.14
 # define FOV_ANGLE (60 * (PI / 180))
-# define MAP_NUM_ROWS 11
-# define MAP_NUM_COLS 15
+# define MAP_NUM_ROWS 14
+# define MAP_NUM_COLS 30
 # define WINDOW_WIDTH ( MAP_NUM_COLS * TILE_SIZE )
 # define WINDOW_HEIGHT ( MAP_NUM_ROWS * TILE_SIZE )
 
