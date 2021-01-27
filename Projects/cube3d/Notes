@@ -1,0 +1,7 @@
+# allocate memory for the struct var to store variable later
+# zero out the buffer cub for storing later
+# there should only 2 argument accepted else put error
+# check the lenght of both argument
+# check the extension of cub
+# check the argument for --save
+# read file 
