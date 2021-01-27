@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   save.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 16:29:59 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/01/27 03:47:46 by mazoukni         ###   ########.fr       */
+/*   Created: 2021/01/27 03:45:27 by mazoukni          #+#    #+#             */
+/*   Updated: 2021/01/27 03:46:09 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char** argv)
+char	*save_texture(char *line, int i)
 {
-	t_cub *cub;
-	int i;
-
-	read_file(cub, argv);
+	char *texture;
+    
+	while (ft_isalpha(line[i]))
+		i++;
+	while (ft_isspace(line[i]))
+		i++;
+	texture = ft_strdup(&line[i]);
+	return(texture);
 }
