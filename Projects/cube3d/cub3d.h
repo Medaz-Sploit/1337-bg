@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/01/27 03:32:23 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/01/27 07:54:02 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct  s_cub {
     bool F;
     bool C;
     t_map map;
+    int save;
 }               t_cub;
 
 #endif

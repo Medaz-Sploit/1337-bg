@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:46:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/01/27 03:47:34 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/01/27 08:02:41 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,23 @@ void	read_line(t_cub *cub, char* line)
 	i = 0;
 	if (line[i] == 'R' && line[i + 1] == ' ' && cub->R == false)
 		save_r(cub, line, i);
-	if (line[i] == 'S' && line[i] == ' ')
-	if (line[i] == 'F' && line[i] == ' ')
-	if (line[i] == 'C' && line[i] == ' ')
+	if (line[i] == 'S' && line[i + 1] == ' ' && cub->S == false)
+        
+	if (line[i] == 'F' && line[i + 1] == ' ' && cub->F == false) 
+	if (line[i] == 'C' && line[i + 1] == ' ' && cub->C == false)
 }
 
-char* read_file(char** argv, t_cub *cub)
+char* read_f(char** argv, t_cub *cub)
 {
-	t_env *env;
-	t_map *map;
-	int i = 0;
+	int fd;
+    char *line;
 	
 	if ((!(fd(argv[1], O_RDONLY)) < 1)
-		exit_out(error, 1);
+		exit_out(cub, 1);
 	while (get_next_line(fd, env->line))
 	{
 		read_line(cub, line);
+        free(line);
 	}
+    read_line(cub, line);
 }
