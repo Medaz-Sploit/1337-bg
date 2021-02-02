@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/01/27 07:54:02 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/01/31 01:28:00 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 # define MAP_NUM_COLS 30
 # define WINDOW_WIDTH ( MAP_NUM_COLS * TILE_SIZE )
 # define WINDOW_HEIGHT ( MAP_NUM_ROWS * TILE_SIZE )
+# define W 13
+# define S 1
+# define D 2
+# define A 0
+# define RIGHT 124
+# define LEFT 123
+# define ESC 53
 
 typedef struct  s_rgb {
     
@@ -46,6 +53,8 @@ typedef struct  s_map {
     char *WE_Path;
     char *EA_Path;
     char *S_Path;
+    int floor;
+    int ceiling;
     struct t_rgb;
 }               t_map;
 
@@ -57,6 +66,15 @@ typedef struct  s_env {
     char *tmp;
 }               t_env;
 
+typedef struct  s_movement {
+    int up;
+    int down;
+    int left;
+    int right;
+    int rot_left;
+    int rot_right;
+}               t_movement;
+
 typedef struct  s_cub {
     bool R;
     bool NO;
@@ -67,6 +85,8 @@ typedef struct  s_cub {
     bool F;
     bool C;
     t_map map;
+    t_env env;
+    t_movement mv;
     int save;
 }               t_cub;
 
