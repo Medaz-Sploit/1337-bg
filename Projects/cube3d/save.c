@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:45:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/01/27 07:29:38 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/01/30 12:28:46 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ void    save_r(t_cub *cub, char *line, int i)
 
     cub->R = 1;
     
+}
+
+static void save_col(t_cub *cub, char *line, int i)
+{
+	
 }
