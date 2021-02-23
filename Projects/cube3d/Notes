@@ -1,7 +1,13 @@
-# allocate memory for the struct var to store variable later
-# zero out the buffer cub for storing later
-# there should only 2 argument accepted else put error
-# check the lenght of both argument
-# check the extension of cub
-# check the argument for --save
-# read file 
+#0 RTFM read the subject
+#1 read about minilib fucntion and try them out a bit (read on 42 minilibx google)
+#2 Understaning mlx library
+#3 Understand the map.cub and its contents
+##4 get the file map.cub and parse it your own way with struct
+#5 after go to pikuma to draw 2D map
+#6 after draw the player and controle his position
+#7 understand raycasting
+8# make your own algorithm
+
+save , read , key, exit , draw, cub3d, check,
+
+cub3d, check, read , save, draw, key, exit
