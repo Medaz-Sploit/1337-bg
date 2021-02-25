@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 03:11:07 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:08:45 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <math.h>
 # include <stdbool.h>
 # include "get_next_line/get_next_line.h"
-# include "libft/libft/libft.h"
+# include "libft/libft.h"
 
 # define WALL_STRIP_WIDTH 1
 # define TILE_SIZE 20
@@ -189,6 +189,18 @@ typedef struct		s_cub
 	int				endian;
 	int				*get_data;
 	int				save;
+	float rayAngle;
+	float wallHitX;
+	float wallHitY;
+	float distance;
+	bool wasHitVertical;
+	float hitWallColor;
+
+	float isRayFacingDown;
+	float isRayFacingUp;
+
+	float isRayFacingRight;
+	float isRayFacingLeft;
 	t_map			map;
 	t_raycasting	rc;
 	t_raysprite		rs;
@@ -209,7 +221,18 @@ typedef struct  s_data {
     int         line_length;
     int         endian;
 }               t_data;
+float rayAngle = normalizeAngle(rayAngle);
+float wallHitX = 0;
+float wallHitY = 0;
+float distance = 0;
+bool wasHitVertical = false;
+float hitWallColor = 0;
 
+float isRayFacingDown = rayAngle > 0 && rayAngle < M_PI;
+float isRayFacingUp = !isRayFacingDown;
+
+float isRayFacingRight = rayAngle < 0.5 * M_PI || rayAngle > 1.5 * M_PI;
+float isRayFacingLeft = !isRayFacingRight;
 t_data img;
 t_cub   *cub;
 int					read_fil(char **argv, t_cub *cub);

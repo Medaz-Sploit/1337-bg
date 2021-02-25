@@ -6,14 +6,25 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 02:35:32 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:10:12 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 int             main(int argc, char **argv)
-{        
+{ 
+	cub->rayAngle = normalizeAngle(angle);
+    cub->wallHitX = 0;
+    cub->wallHitY = 0;
+    cub->distance = 0;
+    cub->wasHitVertical = false;
+
+    cub->isRayFacingDown = cub->rayAngle > 0 && cub->rayAngle < M_PI;
+    cub->isRayFacingUp = !cub->isRayFacingDown;
+
+    cub->isRayFacingRight = cub->rayAngle < 0.5 * M_PI || cub->rayAngle > 1.5 * M_PI;
+    cub->isRayFacingLeft = !cub->isRayFacingRight;      
     int		len;
 
     if (!(cub = (t_cub *)malloc(sizeof(t_cub))))
