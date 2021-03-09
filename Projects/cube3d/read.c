@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:46:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 01:51:19 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/09 00:50:42 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int			read_fil(char **argv, t_cub *cub)
 	}
 	read_line(cub, line);
 	free(line);
+	read_line(cub, "11111111111111111111111111111");
+	
 	line = NULL;
 	close(fd);
 	check_file(cub);

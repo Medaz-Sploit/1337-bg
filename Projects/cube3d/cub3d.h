@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/25 15:08:45 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/08 18:27:31 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define FOV_ANGLE (60 * (M_PI / 180))
 # define MAP_NUM_ROWS 13
 # define MAP_NUM_COLS 34
+# define MINI 0.3
 # define WINDOW_WIDTH ( MAP_NUM_COLS * TILE_SIZE )
 # define WINDOW_HEIGHT ( MAP_NUM_ROWS * TILE_SIZE )
 # define NUM_RAYS  ( WINDOW_WIDTH / WALL_STRIP_WIDTH )
@@ -37,6 +38,8 @@
 # define A 0
 # define RIGHT 124
 # define LEFT 123
+# define UP 126
+# define DOWN 125
 # define ESC 53
 
 
@@ -189,6 +192,7 @@ typedef struct		s_cub
 	int				endian;
 	int				*get_data;
 	int				save;
+	int radius;
 	float rayAngle;
 	float wallHitX;
 	float wallHitY;
@@ -201,6 +205,14 @@ typedef struct		s_cub
 
 	float isRayFacingRight;
 	float isRayFacingLeft;
+	float rotationangle;
+    float turndirection;
+    float rotationspeed;
+    float walkdirection;
+    float movespeed;
+	float movestep;
+	float angle;
+	int colo;
 	t_map			map;
 	t_raycasting	rc;
 	t_raysprite		rs;
@@ -221,20 +233,9 @@ typedef struct  s_data {
     int         line_length;
     int         endian;
 }               t_data;
-float rayAngle = normalizeAngle(rayAngle);
-float wallHitX = 0;
-float wallHitY = 0;
-float distance = 0;
-bool wasHitVertical = false;
-float hitWallColor = 0;
-
-float isRayFacingDown = rayAngle > 0 && rayAngle < M_PI;
-float isRayFacingUp = !isRayFacingDown;
-
-float isRayFacingRight = rayAngle < 0.5 * M_PI || rayAngle > 1.5 * M_PI;
-float isRayFacingLeft = !isRayFacingRight;
 t_data img;
 t_cub   *cub;
+
 int					read_fil(char **argv, t_cub *cub);
 void				check_identifier(t_cub *cub, char *line);
 void				save_res(t_cub *cub, char *line, int i);
@@ -248,5 +249,19 @@ int					exit_game(t_cub *cub, int e);
 void                my_mlx_pixel_put(int x, int y, int color);
 int                 draw_2d();
 int	                ft_isspace(int c);
+void cast(void);
+float normalizeAngle(float angle);
+int     hasWallAt(float x, float y);
+float distanceBetweenPoints(float x1, float y1, float x2, float y2);
+void dda(float x0, float y0, float x1, float y1);
+int update();
+void rayDir(float angle);
+void player_step();
+void player_pos();
+void            my_mlx_pixel_put(int x, int y, int color);
+void   circle(float x, float y, int radius);
+int	key_release(int keycode);
+int	key_press(int keycode);
+int	key_exit();
 
 #endif
