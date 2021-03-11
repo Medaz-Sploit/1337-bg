@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:11:30 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/09 00:03:42 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:02:30 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,19 @@ void raycast(int col, float rayAngle)
     int wallStripHeight = projectedWallHeight;
     int wallTopPixel = (cub->map.width / 2) - (wallStripHeight / 2);
     wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
-
+	
     int wallBottomPixel = (cub->map.width / 2) + (wallStripHeight / 2);
     wallBottomPixel = wallBottomPixel > cub->map.width ? cub->map.width : wallBottomPixel;
-	cub->colo = 0xFF0000;
-    dda(wallBottomPixel, col, wallTopPixel, col);
+    cub->colo = 0xFF0000;
+    //dda(0, (cub->map.width / 2) - (wallStripHeight / 2),  col, (cub->map.width / 2) - (wallStripHeight / 2));
 	cub->colo = 0xFFFFFF;
-    dda(cub->map.width/2 + wallStripHeight/2, col, cub->map.width, col);
-    //dda(cub->rc.pos_x * MINI , cub->rc.pos_y * MINI, cub->wallHitX*MINI, cub->wallHitY*MINI)
-    dda(cub->rc.pos_x, cub->rc.pos_y, cub->wallHitX , cub->wallHitY);
+	 dda(cub->map.width/2 + wallStripHeight/2, col, cub->map.width, col);
+	cub->colo = 0xFF9811;
+	dda(cub->map.width/2 - wallStripHeight/2, col,0, col);
+   
+
+	ft_empty_trash(rayAngle, col);
+
 	
 }
 
@@ -161,7 +165,7 @@ void dda(float x0, float y0, float x1, float y1)
 	// Put pixel for each step 
 	float X = x0; 
 	float Y = y0; 
-	for (int i = 0; i <= steps; i++) 
+	for (int i = 0; i <  steps; i++) 
 	{
 		my_mlx_pixel_put(Y, X, cub->colo);
 		X += Xinc;

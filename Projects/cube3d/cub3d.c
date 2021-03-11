@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/07 21:34:22 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/10 17:40:44 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int             key_hook(int keycode)
 
 void            my_mlx_pixel_put(int x, int y, int color)
 {
-    int		*dst;
+ 
 
-	dst = (int *)mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
+
 	if (x < cub->map.width && y < cub->map.height && x >= 0 && y >= 0)
 		dst[y * (int)cub->map.width + x] = color;
 }
@@ -54,15 +53,17 @@ int             main(int argc, char **argv)
     cub->turndirection = 0;
     cub->rotationspeed = 2 * (M_PI / 180);
     cub->walkdirection = 0;
-    cub->movespeed = 2.0;
+    cub->movespeed = 4;
     cub->radius = 3;
     read_fil(argv, cub);
     cub->mlx_ptr = mlx_init();
     cub->win_ptr = mlx_new_window(cub->mlx_ptr, cub->map.width, cub->map.height, "Hello world!");
     img.img = NULL;
+ 
     player_pos();
+    init_textures();
     //mlx_key_hook(cub->win_ptr, key_hook, &cub);
-    mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
+   mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
 	mlx_hook(cub->win_ptr, 3, 0, key_release, "lll");
     mlx_loop_hook(cub->mlx_ptr, &update, "");
     mlx_loop(cub->mlx_ptr);

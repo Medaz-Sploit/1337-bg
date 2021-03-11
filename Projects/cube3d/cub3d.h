@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/08 18:27:31 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/10 17:07:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ typedef struct		s_colors
 	int				east;
 	int				west;
 	int				wall;
+	int				r;
+	int				g;
+	int				b;
 }					t_colors;
 
 typedef struct		s_movement
@@ -163,6 +166,17 @@ typedef struct		s_raycasting
 	int				draw_end;
 	int				nbr_sprites;
 }					t_raycasting;
+
+typedef struct			s_image
+{
+	int					width;
+	int					height;
+	int					bits_per_pixel;
+	int					size_line;
+	int					endian;
+	void				*ptr;
+	int					*data;
+}						t_image;
 
 typedef struct		s_map
 {
@@ -235,7 +249,13 @@ typedef struct  s_data {
 }               t_data;
 t_data img;
 t_cub   *cub;
-
+t_image					g_north;
+t_image					g_west;
+t_image					g_south;
+t_image					g_east;
+t_image					g_sprite;
+float					g_ray_distance[2561];
+   int		*dst;
 int					read_fil(char **argv, t_cub *cub);
 void				check_identifier(t_cub *cub, char *line);
 void				save_res(t_cub *cub, char *line, int i);
@@ -263,5 +283,10 @@ void   circle(float x, float y, int radius);
 int	key_release(int keycode);
 int	key_press(int keycode);
 int	key_exit();
+unsigned int		shadow(unsigned int color, int col);
+void		init_textures(void);
+void		ft_empty_trash(float rayangle, int col);
+unsigned int	rgb_to_int(unsigned int r, unsigned int g, unsigned int b);
+void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight);
 
 #endif
