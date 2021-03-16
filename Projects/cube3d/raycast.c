@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:11:30 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/10 19:02:30 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 18:22:39 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void raycast(int col, float rayAngle)
 	float nextHorzTouchY = yintercept;
 
 	// Increment xstep and ystep until we find a wall
-	while (nextHorzTouchX >= 0 && nextHorzTouchX < cub->map.width && nextHorzTouchY >= 0 && nextHorzTouchY < cub->map.height) 
+	while (nextHorzTouchX >= 0 && nextHorzTouchX < cub->map.width * TILE_SIZE && nextHorzTouchY >= 0 && nextHorzTouchY < cub->map.height * TILE_SIZE) 
 	{
 		if (hasWallAt(nextHorzTouchX, nextHorzTouchY - (cub->isRayFacingUp ? 1 : 0)))
 		{
@@ -84,7 +84,7 @@ void raycast(int col, float rayAngle)
 	float nextVertTouchY = yintercept;
 
 	// Increment xstep and ystep until we find a wall
-	while (nextVertTouchX >= 0 && nextVertTouchX < cub->map.width && nextVertTouchY >= 0 && nextVertTouchY < cub->map.height) 
+	while (nextVertTouchX >= 0 && nextVertTouchX < cub->map.width * TILE_SIZE && nextVertTouchY >= 0 && nextVertTouchY < cub->map.height * TILE_SIZE) 
 	{
 		if (hasWallAt(nextVertTouchX - (cub->isRayFacingLeft ? 1 : 0), nextVertTouchY)) {
 			foundVertWallHit = true;
@@ -120,21 +120,22 @@ void raycast(int col, float rayAngle)
     float projectedWallHeight = (TILE_SIZE / perpDistance) * distanceProjPlane;
 
     int wallStripHeight = projectedWallHeight;
-    int wallTopPixel = (cub->map.width / 2) - (wallStripHeight / 2);
+    int wallTopPixel = (cub->map.height / 2) - (wallStripHeight / 2);
     wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
 	
-    int wallBottomPixel = (cub->map.width / 2) + (wallStripHeight / 2);
-    wallBottomPixel = wallBottomPixel > cub->map.width ? cub->map.width : wallBottomPixel;
+    int wallBottomPixel = (cub->map.height / 2) + (wallStripHeight / 2);
+    wallBottomPixel = wallBottomPixel > cub->map.height ? cub->map.height : wallBottomPixel;
     cub->colo = 0xFF0000;
     //dda(0, (cub->map.width / 2) - (wallStripHeight / 2),  col, (cub->map.width / 2) - (wallStripHeight / 2));
 	cub->colo = 0xFFFFFF;
-	 dda(cub->map.width/2 + wallStripHeight/2, col, cub->map.width, col);
+	 dda(cub->map.height/2 + wallStripHeight/2, col, cub->map.height, col);
 	cub->colo = 0xFF9811;
-	dda(cub->map.width/2 - wallStripHeight/2, col,0, col);
+	dda(0, col, cub->map.height/2 - wallStripHeight/2, col);
+	//dda(cub->rc.pos_x, cub->rc.pos_y, cub->wallHitX, cub->wallHitY);
    
 
 	ft_empty_trash(rayAngle, col);
-
+	
 	
 }
 

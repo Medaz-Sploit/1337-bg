@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/10 17:40:44 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:28:51 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int             main(int argc, char **argv)
     cub->turndirection = 0;
     cub->rotationspeed = 2 * (M_PI / 180);
     cub->walkdirection = 0;
-    cub->movespeed = 4;
+    cub->movespeed = 10;
     cub->radius = 3;
     read_fil(argv, cub);
     cub->mlx_ptr = mlx_init();
@@ -61,10 +61,10 @@ int             main(int argc, char **argv)
     img.img = NULL;
  
     player_pos();
-    init_textures();
+    init_texture();
     //mlx_key_hook(cub->win_ptr, key_hook, &cub);
    mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
 	mlx_hook(cub->win_ptr, 3, 0, key_release, "lll");
-    mlx_loop_hook(cub->mlx_ptr, &update, "");
+   mlx_loop_hook(cub->mlx_ptr, &update, "");
     mlx_loop(cub->mlx_ptr);
 } 

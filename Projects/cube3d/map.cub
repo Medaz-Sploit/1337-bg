@@ -1,10 +1,10 @@
-R  1000 1000
+R  1200 1000
 
-NO ./textures/test.xpm
-SO ./textures/test.xpm
-WE ./textures/test.xpm
-EA ./textures/test.xpm
-S ./textures/test.xpm
+NO ./textures/wall_3.xpm
+SO ./textures/wood.xpm
+WE ./textures/wall_4.xpm
+EA ./textures/pillar.xpm
+S ./textures/wall_2.xpm
 
 F 255,255,255
 C 0,0,0

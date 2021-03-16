@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 21:41:49 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/10 17:50:17 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 17:56:20 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int            draw_square(int i, int j)
         y = 0;
         while(y < TILE_SIZE)
         {
-            my_mlx_pixel_put(j * TILE_SIZE + y, i * TILE_SIZE +  x, 0xFF00FF);
+            my_mlx_pixel_put(j * TILE_SIZE + y , i * TILE_SIZE +  x , 0x65FF12);
             y++;
         } 
         x++;
@@ -64,8 +64,8 @@ void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight)
 	start = (cub->map.height / 2) - (wallstripheight / 2);
 	end = (cub->map.height / 2) + (wallstripheight / 2) ;
 	texture_y = 0;
-	offset_x = (cub->wasHitVertical) ? (int)(fmod(cub->wallHitY, TILE_SIZE)) : (int)(fmod(cub->wallHitX, TILE_SIZE));
-    while (start <= end)
+	offset_x =  (cub->wasHitVertical) ? (int)cub->wallHitY % TILE_SIZE : (int)cub->wallHitX % TILE_SIZE;
+    while (start < end)
 	{
         dist_from_top = start + (wallstripheight/ 2) - (cub->map.height / 2);
         offset_y = (int)(dist_from_top * (float)TILE_SIZE / wallstripheight);

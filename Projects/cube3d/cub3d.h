@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/10 17:07:43 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 18:20:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "libft/libft.h"
 
 # define WALL_STRIP_WIDTH 1
-# define TILE_SIZE 20
+# define TILE_SIZE 64
 # define PI 3.14
 # define FOV_ANGLE (60 * (M_PI / 180))
 # define MAP_NUM_ROWS 13
@@ -37,6 +37,7 @@
 # define D 2
 # define A 0
 # define RIGHT 124
+# define MINI 0.3
 # define LEFT 123
 # define UP 126
 # define DOWN 125
@@ -284,9 +285,13 @@ int	key_release(int keycode);
 int	key_press(int keycode);
 int	key_exit();
 unsigned int		shadow(unsigned int color, int col);
-void		init_textures(void);
+void		init_textures();
 void		ft_empty_trash(float rayangle, int col);
 unsigned int	rgb_to_int(unsigned int r, unsigned int g, unsigned int b);
 void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight);
+void		raysprite();
+static t_texture	set_texture(char *root_texture);
+void		init_texture(void);
+void				init_sprite();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:57:26 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/10 11:06:13 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 17:46:38 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		get_text_data(void)
 			&g_sprite.width, &g_sprite.height);
 }
 
-void		init_textures(void)
+void		init_texture(void)
 {
 	get_text_data();
 	if (g_north.ptr && g_west.ptr && g_south.ptr && g_east.ptr && g_sprite.ptr)
@@ -61,7 +61,7 @@ void		ft_empty_trash(float rayangle, int col)
 
 	an = rayangle - cub->rayAngle;
 	raydist = cub->distance * cos(an);
-	distanceprojplane = (cub->map.width / 2) / tan(FOV_ANGLE / 2);
+	distanceprojplane = (cub->map.height / 2) / tan(FOV_ANGLE / 2);
 	wallstripheight = (TILE_SIZE / raydist) * distanceprojplane;
 	offset = ((cub->wasHitVertical == 0) ?
 	fmod(cub->wallHitX, TILE_SIZE) : fmod(cub->wallHitY, TILE_SIZE));

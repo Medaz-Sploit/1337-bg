@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 01:54:01 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 01:54:17 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/15 18:15:32 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ static void	position_map(t_cub *cub, int i, int j)
 			|| cub->map.map[i][j] == 'E' || cub->map.map[i][j] == 'W')\
 			&& cub->id.player == 0)
 	{
-		cub->rc.pos_x = j + 0.5;
-		cub->rc.pos_y = i + 0.5;
+		cub->rc.pos_x = (j + 0.5) * TILE_SIZE;
+		cub->rc.pos_y = (i + 0.5) * TILE_SIZE;
 		cub->map.orientation = cub->map.map[i][j];
 		cub->id.player = 1;
 	}
