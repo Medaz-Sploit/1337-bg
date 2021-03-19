@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:57:26 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 17:46:38 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/18 23:28:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void		get_text_data(void)
 			&g_south.width, &g_south.height);
 	g_east.ptr = mlx_xpm_file_to_image(cub->mlx_ptr, cub->map.east,
 			&g_east.width, &g_east.height);
-	g_sprite.ptr = mlx_xpm_file_to_image(cub->mlx_ptr, cub->map.sprite,
+	g_sprite.img_ptr = mlx_xpm_file_to_image(cub->mlx_ptr, cub->map.sprite,
 			&g_sprite.width, &g_sprite.height);
 }
 
 void		init_texture(void)
 {
 	get_text_data();
-	if (g_north.ptr && g_west.ptr && g_south.ptr && g_east.ptr && g_sprite.ptr)
+	if (g_north.ptr && g_west.ptr && g_south.ptr && g_east.ptr && g_sprite.img_ptr)
 	{
 		g_north.data = (int *)mlx_get_data_addr(g_north.ptr,
 		&g_north.bits_per_pixel,
@@ -43,7 +43,7 @@ void		init_texture(void)
 		g_east.data = (int *)mlx_get_data_addr(g_east.ptr,
 		&g_east.bits_per_pixel,
 				&g_east.size_line, &g_east.endian);
-		g_sprite.data = (int *)mlx_get_data_addr(g_sprite.ptr,
+		g_sprite.get_data = (int *)mlx_get_data_addr(g_sprite.img_ptr,
 		&g_sprite.bits_per_pixel,
 				&g_sprite.size_line, &g_sprite.endian);
 	}

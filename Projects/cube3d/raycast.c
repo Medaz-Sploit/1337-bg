@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:11:30 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 18:22:39 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 16:20:08 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void raycast(int col, float rayAngle)
     cub->wasHitVertical = (vertHitDistance < horzHitDistance);
 
     cub->distance *= cos(cub->rc.camera_x - rayAngle);
+	g_ray_distance[col] = cub->distance;
     // printf("0%f\n",rayrayAngle);
     // printf("1%f\n",nassim.rotationangle);
     //cub->distance *= cos(rayAngle);

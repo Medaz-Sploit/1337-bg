@@ -6,122 +6,156 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 15:23:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/12 15:32:11 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 16:47:01 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	color_sprite(int i)
+float	distance(float x1, float y1, float x2, float y2)
 {
-	if (cub->rs.tex_y > 0)
-	{
-		if (cub->sprite[i].get_data[cub->rs.tex_x + cub->rs.tex_y * \
-		cub->sprite[i].width] != 0)
-			cub->sprite[i].color = cub->sprite[i].get_data\
-			[cub->rs.tex_x + cub->rs.tex_y * cub->sprite[i].width];
-		else
-			cub->sprite[i].color = 0xBFD195;
-	}
+	return (hypotf((x2 - x1), (y2 - y1)));
 }
 
-static void	draw_sprite(int x, int i)
+void			ft_draw_sprites(void)
 {
-	int	y;
-	int	d;
-
-	y = cub->rs.draw_start_y;
-	while (y < cub->rs.draw_end_y)
-	{
-		d = (y * 256 - cub->map.height * 128 + cub->rs.height * 128);
-		cub->rs.tex_y = (d * cub->sprite[i].height / cub->rs.height) / 256;
-		color_sprite(i);
-		if (cub->sprite[i].color != 0xBFD195 && \
-				cub->rs.transform_y < cub->rs.dist_wall[x])
-		{
-			if (x >= 0 && x < cub->map.width && y >= 0 && y < cub->map.height)
-			{
-				cub->get_data[x + y * cub->map.width] = \
-					cub->sprite[i].color;
-			}
-		}
-		y++;
-	}
-}
-
-static void	init_raysprite(int i)
-{
-	cub->rs.x = cub->sprite[cub->sprite[i].order].coord_x - cub->rc.pos_x;
-	cub->rs.y = cub->sprite[cub->sprite[i].order].coord_y - cub->rc.pos_y;
-	cub->rs.inv_det = 1 / (cub->rc.plan_x * cub->rc.dir_y \
-			- cub->rc.dir_x * cub->rc.plan_y);
-	cub->rs.transform_x = cub->rs.inv_det * \
-			(cub->rc.dir_y * cub->rs.x - cub->rc.dir_x * cub->rs.y);
-	cub->rs.transform_y = cub->rs.inv_det * \
-			(-cub->rc.plan_y * cub->rs.x + cub->rc.plan_x * cub->rs.y);
-	cub->rs.screen_x = (int)((cub->map.width / 2) * \
-			(1 + cub->rs.transform_x / cub->rs.transform_y));
-	cub->rs.height = abs((int)(cub->map.height / cub->rs.transform_y));
-	cub->rs.draw_start_y = cub->map.height / 2 - cub->rs.height / 2;
-	if (cub->rs.draw_start_y < 0)
-		cub->rs.draw_start_y = 0;
-	cub->rs.draw_end_y = cub->map.height / 2 + cub->rs.height / 2;
-	if (cub->rs.draw_end_y >= cub->map.height)
-		cub->rs.draw_end_y = cub->map.height - 1;
-	cub->rs.width = abs((int)(cub->map.height / cub->rs.transform_y));
-	cub->rs.draw_start_x = cub->rs.screen_x - cub->rs.width / 2;
-	if (cub->rs.draw_start_x < 0)
-		cub->rs.draw_start_x = 0;
-	cub->rs.draw_end_x = cub->rs.screen_x + cub->rs.width / 2;
-	if (cub->rs.draw_end_x >= cub->map.width)
-		cub->rs.draw_end_x = cub->map.width - 1;
-}
-
-static void	sort_sprite()
-{
-	int	i;
-	int	swap;
+	int			i;
 
 	i = 0;
-	while (i + 1 < cub->rc.nbr_sprites)
+	while (i < cub->rc.nbr_sprites) // spirte f map
 	{
-		if (cub->sprite[i].distance < \
-		cub->sprite[cub->sprite[i + 1].order].distance)
+        // distance mabin player o sprite
+		g_s_data[i].distance = distance(cub->rc.pos_x, cub->rc.pos_y,
+		g_s_data[i].coord_x, g_s_data[i].coord_y);
+		i++;
+	}
+    // bubble sort 
+	ft_sort_sprites();
+	i = 0;
+    
+	while (i < cub->rc.nbr_sprites)
+		ft_sprite(i++);
+}
+
+void			render_spt(int x, int y, int sp_size, int k)
+{
+	int			color;
+	int			i;
+	int			j;
+
+	i = 0;
+	color = 0xFF45FF;
+	while (i++ < sp_size)
+	{
+        //window
+		if (x + i < 0 || x + i > cub->map.width)
+			continue;
+        // sprite distance 
+		//printf(" g_s_data[k].distance :%f \t || g_ray_distance[x + i] : %f \n ", g_s_data[k].distance, g_ray_distance[x + i]);
+		if (g_s_data[k].distance >= g_ray_distance[x + i])
+			continue;
+		j = 0;
+        // sprite size
+		while (j++ < sp_size)
 		{
-			swap = cub->sprite[i].order;
-			cub->sprite[i].order = cub->sprite[i + 1].order;
-			cub->sprite[i + 1].order = swap;
-			sort_sprite();
+			if ((int)(g_sprite.height * (j * g_sprite.width / sp_size) + (i * g_sprite.height / sp_size)) < g_sprite.width * g_sprite.height)
+				color = g_sprite.get_data[(int)(g_sprite.height * (j * g_sprite.width / sp_size) + (i * g_sprite.height / sp_size))];
+			if (color != 0)
+				my_mlx_pixel_put(x + i, y + j, color);
+		}
+	}
+}
+
+void			ft_sprite(int i)
+{
+	float		sp_size;
+	float		x_inter;
+	float		y_inter;
+	float		sp_angle;
+
+	sp_angle = atan2(g_s_data[i].coord_y - cub->rc.pos_y, g_s_data[i].coord_x - cub->rc.pos_x);
+	while (sp_angle - cub->rc.camera_x > M_PI)
+		sp_angle -= 2 * M_PI;
+	while (sp_angle - cub->rc.camera_x < -M_PI)
+		sp_angle += 2 * M_PI;
+	if (cub->map.height > cub->map.width)
+		sp_size = (cub->map.height / g_s_data[i].distance) * TILE_SIZE;
+	else
+		sp_size = (cub->map.width / g_s_data[i].distance) * TILE_SIZE;
+    
+	y_inter = cub->map.height / 2 - sp_size / 2 ;
+	x_inter = (sp_angle - cub->rc.camera_x) /
+	FOV_ANGLE * cub->map.width + (cub->map.width / 2 - sp_size / 2);
+	render_spt(x_inter, y_inter, sp_size, i);
+}
+
+void			ft_sort_sprites(void)
+{
+	int			i;
+	int			j;
+	t_sprite	temp;
+
+	i = 0;
+	while (i < cub->rc.nbr_sprites)
+	{
+		j = 0;
+		while (j < cub->rc.nbr_sprites - 1)
+		{
+			if (g_s_data[j].distance < g_s_data[j + 1].distance)
+			{
+				temp = g_s_data[j];
+				g_s_data[j] = g_s_data[j + 1];
+				g_s_data[j + 1] = temp;
+			}
+			j++;
 		}
 		i++;
 	}
 }
 
-void		raysprite()
+void			init_sprites_pos(void)
 {
-	int	i;
-	int	x;
+	int			i;
+	int			j;
+	int			k;
 
-	i = -1;
-	while (++i < cub->rc.nbr_sprites)
+	i = 0;
+	j = 0;
+	k = 0;
+	while (cub->map.map[i] != '\0' && k < cub->rc.nbr_sprites)
 	{
-		cub->sprite[i].order = i;
-		cub->sprite[i].distance = pow(cub->rc.pos_x - \
-		cub->sprite[i].coord_x, 2) + pow(cub->rc.pos_y - \
-		cub->sprite[i].coord_y, 2);
-	}
-	sort_sprite();
-	i = -1;
-	while (++i < cub->rc.nbr_sprites)
-	{
-		init_raysprite(i);
-		x = cub->rs.draw_start_x - 1;
-		while (++x < cub->rs.draw_end_x && x < cub->map.width)
+		j = 0;
+		while (cub->map.map[i][j] != '\0' && k < cub->rc.nbr_sprites)
 		{
-			cub->rs.tex_x = (int)(256 * (x - (-cub->rs.width / 2 + \
-			cub->rs.screen_x)) * cub->sprite[i].width / cub->rs.width) / 256;
-			if (cub->rs.transform_y > 0)
-				draw_sprite(x, i);
+			if (cub->map.map[i][j] == '2')
+			{
+				g_s_data[k].coord_x = (i + 0.5) * TILE_SIZE;
+				g_s_data[k].coord_y = (j + 0.5) * TILE_SIZE;
+				k++;
+			}
+			j++;
 		}
+		i++;
 	}
+}
+
+void			init_sprites(void)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	j = 0;
+	while (cub->map.map[i] != '\0')
+	{
+		j = 0;
+		while (cub->map.map[i][j] != '\0')
+		{
+			if (cub->map.map[i][j] == '2')
+				cub->rc.nbr_sprites += 1;
+			j++;
+		}
+		i++;
+	}
+	init_sprites_pos();
 }

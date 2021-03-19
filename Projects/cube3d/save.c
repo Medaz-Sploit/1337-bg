@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:45:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 01:11:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 18:00:02 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,11 +127,16 @@ void		save_res(t_cub *cub, char *line, int i)
 		tmp++;
 	}
 	if (ft_isdigit(line[i]))
-		cub->map.width = ft_atoi(&line[i]);
+		cub->map.width = ft_atoi(&line[i]);	
 	while (ft_isdigit(line[i]))
 		i++;
 	while (ft_isspace(line[i]))
 		i++;
 	if (ft_isdigit(line[i]))
 		cub->map.height = ft_atoi(&line[i]);
+	if (cub->map.width > 1440 || cub->map.height > 900)
+	{
+		cub->map.width = 1440;
+		cub->map.height = 900;
+	}
 }

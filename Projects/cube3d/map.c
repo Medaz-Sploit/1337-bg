@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 01:54:01 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 18:15:32 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 14:51:39 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ void		check_map(t_cub *cub)
 		while (cub->map.map[i][j])
 		{
 			position_map(cub, i, j);
-			if (cub->map.map[i][j] == '2')
-				cub->rc.nbr_sprites += 1;
+			// if (cub->map.map[i][j] == '2')
+			// 	cub->rc.nbr_sprites += 1;
 			j++;
 		}
 		i++;

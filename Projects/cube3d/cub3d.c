@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 19:28:51 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 03:14:59 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int             main(int argc, char **argv)
  
     player_pos();
     init_texture();
+    init_sprites();
     //mlx_key_hook(cub->win_ptr, key_hook, &cub);
    mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
 	mlx_hook(cub->win_ptr, 3, 0, key_release, "lll");

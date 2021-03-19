@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 18:20:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/19 16:12:55 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct		s_identifiers
 typedef struct		s_sprite
 {
 	int				order;
-	double			distance;
+	float			distance;
 	double			coord_x;
 	double			coord_y;
 	void			*img_ptr;
@@ -250,11 +250,12 @@ typedef struct  s_data {
 }               t_data;
 t_data img;
 t_cub   *cub;
+t_sprite				g_s_data[50];
 t_image					g_north;
 t_image					g_west;
 t_image					g_south;
 t_image					g_east;
-t_image					g_sprite;
+t_sprite					g_sprite;
 float					g_ray_distance[2561];
    int		*dst;
 int					read_fil(char **argv, t_cub *cub);
@@ -292,6 +293,12 @@ void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight)
 void		raysprite();
 static t_texture	set_texture(char *root_texture);
 void		init_texture(void);
-void				init_sprite();
+void			ft_draw_sprites(void);
+void			render_spt(int x, int y, int sp_size, int k);
+void			ft_sprite(int i);
+void			ft_sort_sprites(void);
+void			init_sprites_pos(void);
+float	distance(float x1, float y1, float x2, float y2);
+void			init_sprites(void);
 
 #endif
