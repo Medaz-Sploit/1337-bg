@@ -6,11 +6,25 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 07:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/02/23 01:10:55 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:05:18 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_tab(char **tab)
+{
+	int i;
+	int len;
+
+	i = -1;
+	if (tab)
+	{
+		while (tab[++i])
+			free(tab[i]);
+		free(tab);
+	}
+}
 
 static void	errors_identifiers(int e)
 {
@@ -94,7 +108,7 @@ static void	errors(int e)
 		ft_putstr_fd("Error\nInvalid character in the map\n", 1);
 }
 
-static void	exit_map(t_cub *cub)
+void	exit_map(t_cub *cub)
 {
 	int i;
 

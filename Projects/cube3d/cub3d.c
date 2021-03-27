@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/19 03:14:59 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:08:16 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int             main(int argc, char **argv)
 
     if (!(cub = (t_cub *)malloc(sizeof(t_cub))))
 		exit_game(cub, 6);
+    
 	ft_bzero(cub, sizeof(t_cub));
 	if (argc < 2 || argc > 3)
 		exit_game(cub, 1);
@@ -51,7 +52,7 @@ int             main(int argc, char **argv)
 	}
     cub->rotationangle = M_PI / 2;
     cub->turndirection = 0;
-    cub->rotationspeed = 2 * (M_PI / 180);
+    cub->rotationspeed = 5 * (M_PI / 180);
     cub->walkdirection = 0;
     cub->movespeed = 10;
     cub->radius = 3;

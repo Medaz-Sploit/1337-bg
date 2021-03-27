@@ -3,6 +3,11 @@
         "__cxx_version": "cpp",
         "__hash_table": "cpp",
         "functional": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "__locale": "c",
+        "__threading_support": "c",
+        "locale": "c",
+        "memory": "c",
+        "utility": "c"
     }
 }

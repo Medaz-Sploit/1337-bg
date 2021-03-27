@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/19 16:12:55 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/26 17:05:46 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,12 +293,15 @@ void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight)
 void		raysprite();
 static t_texture	set_texture(char *root_texture);
 void		init_texture(void);
-void			ft_draw_sprites(void);
-void			render_spt(int x, int y, int sp_size, int k);
-void			ft_sprite(int i);
-void			ft_sort_sprites(void);
-void			init_sprites_pos(void);
-float	distance(float x1, float y1, float x2, float y2);
-void			init_sprites(void);
+void		ft_draw_sprites(void);
+void		render_spt(int x, int y, int sp_size, int k);
+void		ft_sprite(int i);
+void		ft_sort_sprites(void);
+void		init_sprites_pos(void);
+float		distance(float x1, float y1, float x2, float y2);
+void		init_sprites(void);
+void		bmp(t_cub *cub);
+void	free_tab(char **tab);
+void	exit_map(t_cub *cub);
 
 #endif
