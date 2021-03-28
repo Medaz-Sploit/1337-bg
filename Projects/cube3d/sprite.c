@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 15:23:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/19 16:47:01 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:21:22 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ void			ft_draw_sprites(void)
 	int			i;
 
 	i = 0;
-	while (i < cub->rc.nbr_sprites) // spirte f map
+	while (i < cub->rc.nbr_sprites)
 	{
-        // distance mabin player o sprite
 		g_s_data[i].distance = distance(cub->rc.pos_x, cub->rc.pos_y,
 		g_s_data[i].coord_x, g_s_data[i].coord_y);
 		i++;
 	}
-    // bubble sort 
 	ft_sort_sprites();
 	i = 0;
     
@@ -47,15 +45,11 @@ void			render_spt(int x, int y, int sp_size, int k)
 	color = 0xFF45FF;
 	while (i++ < sp_size)
 	{
-        //window
 		if (x + i < 0 || x + i > cub->map.width)
 			continue;
-        // sprite distance 
-		//printf(" g_s_data[k].distance :%f \t || g_ray_distance[x + i] : %f \n ", g_s_data[k].distance, g_ray_distance[x + i]);
 		if (g_s_data[k].distance >= g_ray_distance[x + i])
 			continue;
 		j = 0;
-        // sprite size
 		while (j++ < sp_size)
 		{
 			if ((int)(g_sprite.height * (j * g_sprite.width / sp_size) + (i * g_sprite.height / sp_size)) < g_sprite.width * g_sprite.height)

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 21:41:49 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/15 17:56:20 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:13:14 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int            draw_square(int i, int j)
     return(0);
 }
 
-int            draw_2d()
+int            draw_2d(void)
 {
     int i; 
     int j;

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 12:57:08 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/07 01:48:05 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:15:27 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ int	key_release(int keycode)
 int	key_press(int keycode)
 {
 	if (keycode == W)
-		cub->walkdirection = 1; // walkDirection
+		cub->walkdirection = 1;
 	if (keycode == S)
 		cub->walkdirection = -1;
 	if (keycode == D)
-		cub->turndirection = 1; // turnDirection
+		cub->turndirection = 1;
 	if (keycode == A)
 		cub->turndirection = -1;
 	if (keycode == LEFT)
-		cub->turndirection = -1;  // turnDirection
+		cub->turndirection = -1;
 	if (keycode == RIGHT)
 		cub->turndirection = 1;
 	if (keycode == UP)

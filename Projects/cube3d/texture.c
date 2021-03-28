@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:57:26 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/18 23:28:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:22:33 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,4 @@ void		ft_empty_trash(float rayangle, int col)
 		ft_draw_texture(g_south, col, offset, wallstripheight);
 	else if (cub->isRayFacingUp && !cub->wasHitVertical)
 		ft_draw_texture(g_north, col, offset, wallstripheight);
-	//ft_draw_fc_mini(col, wallstripheight);
-}
-
-unsigned int		shadow(unsigned int color, int col)
-{
-	t_colors			shadow;
-	float			fact;
-	unsigned int	dark;
-
-	fact = 200 / g_ray_distance[col];
-	shadow.r = (((color >> 16) & 0xFF)) * fact;
-	shadow.g = (((color >> 8) & 0xFF)) * fact;
-	shadow.b = ((color) & (0xFF)) * fact;
-	dark = rgb_to_int(shadow.r, shadow.g, shadow.b);
-	if (dark > color)
-		dark = color;
-	return (dark);
-}
-
-unsigned int	rgb_to_int(unsigned int r, unsigned int g, unsigned int b)
-{
-	int c;
-
-	c = r;
-	c = (c << 8) | g;
-	c = (c << 8) | b;
-	return (c);
 }

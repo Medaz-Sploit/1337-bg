@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:46:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/26 17:07:12 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:17:07 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,19 @@ int	ft_isspace(int c)
 
 static void	buffer_map(t_cub *cub, char *line)
 {
+	char *tmp;
+
 	if (!cub->map.tmp)
 		cub->map.tmp = ft_strdup("");
 	else
+	{
+		tmp = cub->map.tmp;
 		cub->map.tmp = ft_strjoin(cub->map.tmp, "\n");
+		free(tmp);
+	}
+	tmp = cub->map.tmp;
 	cub->map.tmp = ft_strjoin(cub->map.tmp, line);
+	free(tmp);
 	cub->map.rows++;
 }
 
@@ -114,8 +122,6 @@ int			read_fil(char **argv, t_cub *cub)
 {
 	int		fd;
 	char	*line;
-	char	*tmp;
-
 
 	if ((fd = open(argv[1], O_RDONLY)) < 1)
 		exit_game(cub, 7);

@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/26 17:05:46 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:14:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,27 +207,25 @@ typedef struct		s_cub
 	int				endian;
 	int				*get_data;
 	int				save;
-	int radius;
-	float rayAngle;
-	float wallHitX;
-	float wallHitY;
-	float distance;
-	bool wasHitVertical;
-	float hitWallColor;
-
-	float isRayFacingDown;
-	float isRayFacingUp;
-
-	float isRayFacingRight;
-	float isRayFacingLeft;
-	float rotationangle;
-    float turndirection;
-    float rotationspeed;
-    float walkdirection;
-    float movespeed;
-	float movestep;
-	float angle;
-	int colo;
+	int 			radius;
+	float 			rayAngle;
+	float 			wallHitX;
+	float 			wallHitY;
+	float 			distance;
+	bool 			wasHitVertical;
+	float 			hitWallColor;
+	float 			isRayFacingDown;
+	float 			isRayFacingUp;
+	float 			isRayFacingRight;
+	float 			isRayFacingLeft;
+	float 			rotationangle;
+    float 			turndirection;
+    float 			rotationspeed;
+    float 			walkdirection;
+    float 			movespeed;
+	float 			movestep;
+	float 			angle;
+	int 			colo;
 	t_map			map;
 	t_raycasting	rc;
 	t_raysprite		rs;
@@ -248,16 +246,18 @@ typedef struct  s_data {
     int         line_length;
     int         endian;
 }               t_data;
-t_data img;
-t_cub   *cub;
-t_sprite				g_s_data[50];
-t_image					g_north;
-t_image					g_west;
-t_image					g_south;
-t_image					g_east;
-t_sprite					g_sprite;
-float					g_ray_distance[2561];
-   int		*dst;
+
+float			g_ray_distance[2561];
+int			*dst;
+t_data 			img;
+t_cub   		*cub;
+t_sprite		g_s_data[50];
+t_image			g_north;
+t_image			g_west;
+t_image			g_south;
+t_image			g_east;
+t_sprite		g_sprite;
+
 int					read_fil(char **argv, t_cub *cub);
 void				check_identifier(t_cub *cub, char *line);
 void				save_res(t_cub *cub, char *line, int i);
@@ -269,39 +269,40 @@ void				check_file(t_cub *cub);
 void				save_map(t_cub *cub);
 int					exit_game(t_cub *cub, int e);
 void                my_mlx_pixel_put(int x, int y, int color);
-int                 draw_2d();
+int                 draw_2d(void);
 int	                ft_isspace(int c);
-void cast(void);
-float normalizeAngle(float angle);
-int     hasWallAt(float x, float y);
-float distanceBetweenPoints(float x1, float y1, float x2, float y2);
-void dda(float x0, float y0, float x1, float y1);
-int update();
-void rayDir(float angle);
-void player_step();
-void player_pos();
-void            my_mlx_pixel_put(int x, int y, int color);
-void   circle(float x, float y, int radius);
-int	key_release(int keycode);
-int	key_press(int keycode);
-int	key_exit();
+void 				cast(void);
+float 				normalizeAngle(float angle);
+int     			hasWallAt(float x, float y);
+float 				distanceBetweenPoints(float x1, float y1, float x2, float y2);
+void 				dda(float x0, float y0, float x1, float y1);
+int 				update(void);
+void 				rayDir(float angle);
+void 				player_step(void);
+void 				player_pos(void);
+void            	my_mlx_pixel_put(int x, int y, int color);
+void   				circle(float x, float y, int radius);
+int					key_release(int keycode);
+int					key_press(int keycode);
+int					key_exit(void);
 unsigned int		shadow(unsigned int color, int col);
-void		init_textures();
-void		ft_empty_trash(float rayangle, int col);
-unsigned int	rgb_to_int(unsigned int r, unsigned int g, unsigned int b);
-void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight);
-void		raysprite();
+void				init_textures(void);
+void				ft_empty_trash(float rayangle, int col);
+unsigned int		rgb_to_int(unsigned int r, unsigned int g, unsigned int b);
+void				ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight);
+void				raysprite(void);
 static t_texture	set_texture(char *root_texture);
-void		init_texture(void);
-void		ft_draw_sprites(void);
-void		render_spt(int x, int y, int sp_size, int k);
-void		ft_sprite(int i);
-void		ft_sort_sprites(void);
-void		init_sprites_pos(void);
-float		distance(float x1, float y1, float x2, float y2);
-void		init_sprites(void);
-void		bmp(t_cub *cub);
-void	free_tab(char **tab);
-void	exit_map(t_cub *cub);
+void				init_texture(void);
+void				ft_draw_sprites(void);
+void				render_spt(int x, int y, int sp_size, int k);
+void				ft_sprite(int i);
+void				ft_sort_sprites(void);
+void				init_sprites_pos(void);
+float				distance(float x1, float y1, float x2, float y2);
+void				init_sprites(void);
+void				bmp(t_cub *cub);
+void				free_tab(char **tab);
+void				exit_map(t_cub *cub);
+char 				**fill_map(void);
 
 #endif

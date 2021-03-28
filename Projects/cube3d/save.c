@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:45:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/19 18:00:02 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/27 16:28:11 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ void		save_map(t_cub *cub)
 	int	k;
 
 	i = 0;
-	while (cub->map.tmp[i++])
-	{
-		if (cub->map.tmp[i] == ' ')
-			cub->map.tmp[i] = '4';
-	}
 	alloc_map(cub);
 	i = 0;
 	j = 0;

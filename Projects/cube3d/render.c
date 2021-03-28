@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:15:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/26 16:33:14 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:05:43 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int update()
 		  bmp(cub);
       exit(0);
     }
-    //raysprite();
     mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, img.img, 0, 0);
     return(0);
 }

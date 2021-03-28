@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 22:00:06 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/26 17:08:16 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 18:06:29 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,16 @@ int             key_hook(int keycode)
 
 void            my_mlx_pixel_put(int x, int y, int color)
 {
- 
-
-
 	if (x < cub->map.width && y < cub->map.height && x >= 0 && y >= 0)
 		dst[y * (int)cub->map.width + x] = color;
 }
 
 int             main(int argc, char **argv)
 { 
-      
     int		len;
 
     if (!(cub = (t_cub *)malloc(sizeof(t_cub))))
 		exit_game(cub, 6);
-    
 	ft_bzero(cub, sizeof(t_cub));
 	if (argc < 2 || argc > 3)
 		exit_game(cub, 1);
@@ -54,19 +49,17 @@ int             main(int argc, char **argv)
     cub->turndirection = 0;
     cub->rotationspeed = 5 * (M_PI / 180);
     cub->walkdirection = 0;
-    cub->movespeed = 10;
+    cub->movespeed = 5;
     cub->radius = 3;
     read_fil(argv, cub);
     cub->mlx_ptr = mlx_init();
     cub->win_ptr = mlx_new_window(cub->mlx_ptr, cub->map.width, cub->map.height, "Hello world!");
     img.img = NULL;
- 
     player_pos();
     init_texture();
     init_sprites();
-    //mlx_key_hook(cub->win_ptr, key_hook, &cub);
-   mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
+    mlx_hook(cub->win_ptr, 2, 0, key_press, "lll");
 	mlx_hook(cub->win_ptr, 3, 0, key_release, "lll");
-   mlx_loop_hook(cub->mlx_ptr, &update, "");
+    mlx_loop_hook(cub->mlx_ptr, &update, "");
     mlx_loop(cub->mlx_ptr);
 } 

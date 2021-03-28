@@ -6,7 +6,7 @@
 /*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 07:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/26 17:05:18 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/28 14:13:19 by mazoukni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	free_tab(char **tab)
 {
 	int i;
-	int len;
-
 	i = -1;
 	if (tab)
 	{

@@ -6,14 +6,14 @@
 #    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/06 21:27:10 by mazoukni          #+#    #+#              #
-#    Updated: 2021/03/26 16:38:25 by mazoukni         ###   ########.fr        #
+#    Updated: 2021/03/27 16:08:44 by mazoukni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all fclean clean re
 NAME = cub3D
 CC = gcc 
-FLAGS = -g3
+FLAGS = -g
 SRC = 	check.c draw.c key.c map.c bmp.c sprite.c raycast.c render.c \
 		cub3d.c exit.c player.c read.c save.c texture.c
 LIB =	get_next_line/get_next_line.h libft/libft.h libft.a get_next_line/get_next_line*.c
