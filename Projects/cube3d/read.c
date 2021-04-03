@@ -6,7 +6,7 @@
 /*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 03:46:50 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/04/02 23:27:38 by nabboudi         ###   ########.fr       */
+/*   Updated: 2021/04/03 01:10:06 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,17 @@ static void	read_textures(t_cub *g_cub, char *line, int i)
 void	read_lin(t_cub *g_cub, char *line)
 {
 	int i;
+	char **tab;
 
 	i = 0;
+	tab = ft_split(line ,' ');
 	while (ft_isspace(line[i]))
 		i++;
-	if (line[i] == 'R' && line[i + 1] == ' ' && g_cub->id.r == 0)
-		save_res(g_cub, line, i);
+	if (ft_tablen(tab))
+	{
+		if (!ft_strncmp(tab[0],"R",1))
+			ressolution(&g_cub->map.width, &g_cub->map.height, tab);
+	}
 	read_textures(g_cub, line, i);
 	if (line[i] == 'F' && line[i + 1] == ' ' )
 	{
