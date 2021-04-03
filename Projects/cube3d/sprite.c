@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 15:23:02 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 18:21:22 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:01:01 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void			ft_draw_sprites(void)
 	int			i;
 
 	i = 0;
-	while (i < cub->rc.nbr_sprites)
+	while (i < g_cub->rc.nbr_sprites)
 	{
-		g_s_data[i].distance = distance(cub->rc.pos_x, cub->rc.pos_y,
+		g_s_data[i].distance = distance(g_cub->rc.pos_x, g_cub->rc.pos_y,
 		g_s_data[i].coord_x, g_s_data[i].coord_y);
 		i++;
 	}
 	ft_sort_sprites();
 	i = 0;
-    
-	while (i < cub->rc.nbr_sprites)
+
+	while (i < g_cub->rc.nbr_sprites)
 		ft_sprite(i++);
 }
 
@@ -45,7 +45,7 @@ void			render_spt(int x, int y, int sp_size, int k)
 	color = 0xFF45FF;
 	while (i++ < sp_size)
 	{
-		if (x + i < 0 || x + i > cub->map.width)
+		if (x + i < 0 || x + i > g_cub->map.width)
 			continue;
 		if (g_s_data[k].distance >= g_ray_distance[x + i])
 			continue;
@@ -67,19 +67,19 @@ void			ft_sprite(int i)
 	float		y_inter;
 	float		sp_angle;
 
-	sp_angle = atan2(g_s_data[i].coord_y - cub->rc.pos_y, g_s_data[i].coord_x - cub->rc.pos_x);
-	while (sp_angle - cub->rc.camera_x > M_PI)
+	sp_angle = atan2(g_s_data[i].coord_y - g_cub->rc.pos_y, g_s_data[i].coord_x - g_cub->rc.pos_x);
+	while (sp_angle - g_cub->rc.camera_x > M_PI)
 		sp_angle -= 2 * M_PI;
-	while (sp_angle - cub->rc.camera_x < -M_PI)
+	while (sp_angle - g_cub->rc.camera_x < -M_PI)
 		sp_angle += 2 * M_PI;
-	if (cub->map.height > cub->map.width)
-		sp_size = (cub->map.height / g_s_data[i].distance) * TILE_SIZE;
+	if (g_cub->map.height > g_cub->map.width)
+		sp_size = (g_cub->map.height / g_s_data[i].distance) * TILE_SIZE;
 	else
-		sp_size = (cub->map.width / g_s_data[i].distance) * TILE_SIZE;
-    
-	y_inter = cub->map.height / 2 - sp_size / 2 ;
-	x_inter = (sp_angle - cub->rc.camera_x) /
-	FOV_ANGLE * cub->map.width + (cub->map.width / 2 - sp_size / 2);
+		sp_size = (g_cub->map.width / g_s_data[i].distance) * TILE_SIZE;
+
+	y_inter = g_cub->map.height / 2 - sp_size / 2 ;
+	x_inter = (sp_angle - g_cub->rc.camera_x) /
+	FOV_ANGLE * g_cub->map.width + (g_cub->map.width / 2 - sp_size / 2);
 	render_spt(x_inter, y_inter, sp_size, i);
 }
 
@@ -90,10 +90,10 @@ void			ft_sort_sprites(void)
 	t_sprite	temp;
 
 	i = 0;
-	while (i < cub->rc.nbr_sprites)
+	while (i < g_cub->rc.nbr_sprites)
 	{
 		j = 0;
-		while (j < cub->rc.nbr_sprites - 1)
+		while (j < g_cub->rc.nbr_sprites - 1)
 		{
 			if (g_s_data[j].distance < g_s_data[j + 1].distance)
 			{
@@ -116,12 +116,12 @@ void			init_sprites_pos(void)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (cub->map.map[i] != '\0' && k < cub->rc.nbr_sprites)
+	while (g_cub->map.map[i] != '\0' && k < g_cub->rc.nbr_sprites)
 	{
 		j = 0;
-		while (cub->map.map[i][j] != '\0' && k < cub->rc.nbr_sprites)
+		while (g_cub->map.map[i][j] != '\0' && k < g_cub->rc.nbr_sprites)
 		{
-			if (cub->map.map[i][j] == '2')
+			if (g_cub->map.map[i][j] == '2')
 			{
 				g_s_data[k].coord_x = (i + 0.5) * TILE_SIZE;
 				g_s_data[k].coord_y = (j + 0.5) * TILE_SIZE;
@@ -140,16 +140,18 @@ void			init_sprites(void)
 
 	i = 0;
 	j = 0;
-	while (cub->map.map[i] != '\0')
+	while (g_cub->map.map[i] != '\0')
 	{
 		j = 0;
-		while (cub->map.map[i][j] != '\0')
+		while (g_cub->map.map[i][j] != '\0')
 		{
-			if (cub->map.map[i][j] == '2')
-				cub->rc.nbr_sprites += 1;
+			if (g_cub->map.map[i][j] == '2')
+				g_cub->rc.nbr_sprites += 1;
 			j++;
 		}
 		i++;
 	}
+	if (g_cub->rc.nbr_sprites >= 50)
+		exit_game(g_cub, 35);
 	init_sprites_pos();
 }

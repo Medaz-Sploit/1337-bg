@@ -1,0 +1,15 @@
+R  800 800
+
+NO ./textures/wall_ 2.xpm
+SO ./textures/wood.xpm
+EA ./textures/wall_4.xpm
+WE ./textures/eagle.xpm
+S ./textures/sprite_1.xpm
+
+
+C 120,45,0
+F 15,0,45
+
+ 1
+1N1
+ 1

@@ -3,34 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+         #
+#    By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/06 21:27:10 by mazoukni          #+#    #+#              #
-#    Updated: 2021/03/27 16:08:44 by mazoukni         ###   ########.fr        #
+#    Updated: 2021/03/31 19:29:01 by nabboudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all fclean clean re
 NAME = cub3D
-CC = gcc 
+CC = gcc
 FLAGS = -g
 SRC = 	check.c draw.c key.c map.c bmp.c sprite.c raycast.c render.c \
-		cub3d.c exit.c player.c read.c save.c texture.c
-LIB =	get_next_line/get_next_line.h libft/libft.h libft.a get_next_line/get_next_line*.c
-FRAMWORK = -lmlx -framework appkit -framework opengl -D BUFFER_SIZE=1000
+		cub3d.c ft_issymbol.c exit.c player.c read.c save.c texture.c get_next_line/get_next_line*.c
+LIB =	libft.a
+FRAMWORK = -lmlx -framework appkit -framework opengl  -D BUFFER_SIZE=1000
 
 all : $(NAME)
 
 $(NAME):
-	$(CC)  $(FLAGS) $(SRC) $(LIB)  $(FRAMWORK)
+	gcc -o $(NAME) $(FLAGS) $(SRC) $(LIB) $(FRAMWORK)
+
+clean:
+	rm -rf *.o
 
 fclean: clean
 	rm -f $(NAME)
-	make -C libft/ fclean
-	
-clean:
-	make -C libft/ clean
-re: fclean all
 
-libft: 
-	make -C libtf/
+re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:15:27 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 18:05:43 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/30 06:52:44 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int update()
 {
-    if (img.img != NULL)
-      mlx_destroy_image(cub->mlx_ptr, img.img);
-    img.img = mlx_new_image(cub->mlx_ptr, cub->map.width, cub->map.height);
-    dst = (int *)mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-    draw_2d();
-    player_step();
-    cast();
-    ft_draw_sprites();
-    if (cub->save == 1)
-    {
-		  bmp(cub);
-      exit(0);
-    }
-    mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, img.img, 0, 0);
-    return(0);
+    if (g_img.img != NULL)
+      mlx_destroy_image(g_cub->mlx_ptr, g_img.img);
+    g_img.img = mlx_new_image(g_cub->mlx_ptr, g_cub->map.width, g_cub->map.height);
+    g_dst = (int *)mlx_get_data_addr(g_img.img, &g_img.bits_per_pixel, &g_img.line_length,
+			&g_img.endian);
+	player_step();
+	cast();
+	ft_draw_sprites();
+	if (g_cub->save == 1)
+	{
+		bmp(g_cub);
+		exit(0);
+	}
+	mlx_put_image_to_window(g_cub->mlx_ptr, g_cub->win_ptr, g_img.img, 0, 0);
+	return(0);
 }

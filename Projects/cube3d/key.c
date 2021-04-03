@@ -3,39 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 12:57:08 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 18:15:27 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/31 22:45:12 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_exit()
+int	key_exit(void)
 {
-	exit_game(cub, 0);
+	exit_game(g_cub, 0);
 	return (0);
 }
 
 int	key_release(int keycode)
 {
 	if (keycode == W)
-		cub->walkdirection = 0;
+		g_cub->walkdirection = 0;
 	if (keycode == S)
-		cub->walkdirection = 0;
+		g_cub->walkdirection = 0;
 	if (keycode == D)
-		cub->turndirection = 0;
+		g_cub->turndirection = 0;
 	if (keycode == A)
-		cub->turndirection = 0;
+		g_cub->turndirection = 0;
 	if (keycode == LEFT)
-		cub->turndirection = 0;
+		g_cub->turndirection = 0;
 	if (keycode == RIGHT)
-		cub->turndirection = 0;
+		g_cub->turndirection = 0;
 	if (keycode == UP)
-		cub->walkdirection = 0;
+		g_cub->walkdirection = 0;
 	if (keycode == DOWN)
-		cub->walkdirection = 0;
+		g_cub->walkdirection = 0;
+	if (keycode == 259 || keycode == 260)
+		g_cub->turndirection = 0;
+	if (keycode == 259 || keycode == 260)
+		g_cub->walkdirection = 0;
 	if (keycode == ESC)
 		key_exit();
 	return (0);
@@ -44,20 +48,20 @@ int	key_release(int keycode)
 int	key_press(int keycode)
 {
 	if (keycode == W)
-		cub->walkdirection = 1;
+		g_cub->walkdirection = 1;
 	if (keycode == S)
-		cub->walkdirection = -1;
+		g_cub->walkdirection = -1;
 	if (keycode == D)
-		cub->turndirection = 1;
+		g_cub->turndirection = 1;
 	if (keycode == A)
-		cub->turndirection = -1;
+		g_cub->turndirection = -1;
 	if (keycode == LEFT)
-		cub->turndirection = -1;
+		g_cub->turndirection = -1;
 	if (keycode == RIGHT)
-		cub->turndirection = 1;
+		g_cub->turndirection = 1;
 	if (keycode == UP)
-		cub->walkdirection = 1;
+		g_cub->walkdirection = 1;
 	if (keycode == DOWN)
-		cub->walkdirection = -1;
+		g_cub->walkdirection = -1;
 	return (0);
 }

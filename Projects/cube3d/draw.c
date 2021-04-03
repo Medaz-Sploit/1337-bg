@@ -3,74 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 21:41:49 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 18:13:14 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/31 21:27:45 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int            draw_square(int i, int j)
+void	ft_draw_texture(t_image ptr, int col, float offset, \
+		float wallstripheight)
 {
-    int x;
-    int y;
-
-    x = 0;
-    while (x < TILE_SIZE)
-    {
-        y = 0;
-        while(y < TILE_SIZE)
-        {
-            my_mlx_pixel_put(j * TILE_SIZE + y , i * TILE_SIZE +  x , 0x65FF12);
-            y++;
-        } 
-        x++;
-    }
-    return(0);
-}
-
-int            draw_2d(void)
-{
-    int i; 
-    int j;
-
-    i = 0;
-    while (cub->map.map[i] != NULL)
-    {
-        j = 0;
-        while (cub->map.map[i][j] != '\0')
-        {
-            if (cub->map.map[i][j] == '1')
-                draw_square(i, j);
-            j += 1;
-        }
-        i++;
-    }
-    return(0);
-}
-
-void		ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight)
-{
-	int	start;
-	int	end;
-	float	texture_y;
-    int     color;
-    int offset_x;
-    int offset_y;
-    int dist_from_top;
-
-	start = (cub->map.height / 2) - (wallstripheight / 2);
-	end = (cub->map.height / 2) + (wallstripheight / 2) ;
-	texture_y = 0;
-	offset_x =  (cub->wasHitVertical) ? (int)cub->wallHitY % TILE_SIZE : (int)cub->wallHitX % TILE_SIZE;
-    while (start < end)
+	g_draw.start = (g_cub->map.height / 2) - (wallstripheight / 2);
+	g_draw.end = (g_cub->map.height / 2) + (wallstripheight / 2);
+	g_draw.texture_y = 0;
+	g_draw.offset_x = ternary((g_cub->wasHitVertical), (int)g_cub->wallHitY % TILE_SIZE, \
+						(int)g_cub->wallHitX % TILE_SIZE);
+	while (g_draw.start < g_draw.end)
 	{
-        dist_from_top = start + (wallstripheight/ 2) - (cub->map.height / 2);
-        offset_y = (int)(dist_from_top * (float)TILE_SIZE / wallstripheight);
-        color = ptr.data[offset_y * TILE_SIZE + offset_x];
-		my_mlx_pixel_put(col, start, color);
-		start++;
+		g_draw.dist_from_top = g_draw.start + (wallstripheight \
+								/ 2) - (g_cub->map.height / 2);
+		g_draw.offset_y = (int)(g_draw.dist_from_top * \
+							(float)TILE_SIZE / wallstripheight);
+		g_draw.color = ptr.data[g_draw.offset_y * TILE_SIZE + g_draw.offset_x];
+		my_mlx_pixel_put(col, g_draw.start, g_draw.color);
+		g_draw.start++;
 	}
+}
+
+int	ternary(int condition, int ret1, int ret2)
+{
+	if (condition)
+		return (ret1);
+	else
+		return (ret2);
 }

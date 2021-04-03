@@ -1,0 +1,21 @@
+R  800 800
+
+SO ./textures/eagle.xpm
+
+
+WE	./textures/blues tone.xpm
+
+EA ./textures/carl.xpm
+
+S ./textures/dori1.xpm
+
+NO ./textures/butterfly.xpm
+
+C  255 ,100,10
+F  0,25,255
+
+
+111 1
+1N0101
+100001
+111111

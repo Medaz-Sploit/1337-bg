@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:20:51 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 18:14:43 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:27:33 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@
 
 # define WALL_STRIP_WIDTH 1
 # define TILE_SIZE 64
-# define PI 3.14
-# define FOV_ANGLE (60 * (M_PI / 180))
+# define PI 3.14159265359
+# define FOV_ANGLE 1.0471975512
 # define MAP_NUM_ROWS 13
 # define MAP_NUM_COLS 34
 # define MINI 0.3
-# define WINDOW_WIDTH ( MAP_NUM_COLS * TILE_SIZE )
-# define WINDOW_HEIGHT ( MAP_NUM_ROWS * TILE_SIZE )
-# define NUM_RAYS  ( WINDOW_WIDTH / WALL_STRIP_WIDTH )
 # define W 13
 # define S 1
 # define D 2
@@ -43,8 +40,7 @@
 # define DOWN 125
 # define ESC 53
 
-
-typedef struct		s_bmp
+typedef struct s_bmp
 {
 	unsigned char	header[54];
 	unsigned char	zero[3];
@@ -54,7 +50,7 @@ typedef struct		s_bmp
 	int				color;
 }					t_bmp;
 
-typedef struct		s_identifiers
+typedef struct s_identifiers
 {
 	int				r;
 	int				no;
@@ -68,7 +64,7 @@ typedef struct		s_identifiers
 	int				player;
 }					t_identifiers;
 
-typedef struct		s_sprite
+typedef struct s_sprite
 {
 	int				order;
 	float			distance;
@@ -84,7 +80,7 @@ typedef struct		s_sprite
 	int				color;
 }					t_sprite;
 
-typedef struct		s_texture
+typedef struct s_texture
 {
 	void			*img_ptr;
 	int				bits_per_pixel;
@@ -95,7 +91,7 @@ typedef struct		s_texture
 	int				height;
 }					t_texture;
 
-typedef struct		s_colors
+typedef struct s_colors
 {
 	int				roof;
 	int				floor;
@@ -109,7 +105,7 @@ typedef struct		s_colors
 	int				b;
 }					t_colors;
 
-typedef struct		s_movement
+typedef struct s_movement
 {
 	int				up;
 	int				down;
@@ -122,7 +118,7 @@ typedef struct		s_movement
 	double			rot_speed;
 }					t_movement;
 
-typedef struct		s_raysprite
+typedef struct s_raysprite
 {
 	double			x;
 	double			y;
@@ -141,7 +137,7 @@ typedef struct		s_raysprite
 	double			*dist_wall;
 }					t_raysprite;
 
-typedef struct		s_raycasting
+typedef struct s_raycasting
 {
 	double			pos_x;
 	double			pos_y;
@@ -168,7 +164,7 @@ typedef struct		s_raycasting
 	int				nbr_sprites;
 }					t_raycasting;
 
-typedef struct			s_image
+typedef struct s_image
 {
 	int					width;
 	int					height;
@@ -179,7 +175,7 @@ typedef struct			s_image
 	int					*data;
 }						t_image;
 
-typedef struct		s_map
+typedef struct s_map
 {
 	char			**map;
 	char			*tmp;
@@ -197,7 +193,7 @@ typedef struct		s_map
 	char			orientation;
 }					t_map;
 
-typedef struct		s_cub
+typedef struct s_cub
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -207,25 +203,25 @@ typedef struct		s_cub
 	int				endian;
 	int				*get_data;
 	int				save;
-	int 			radius;
-	float 			rayAngle;
-	float 			wallHitX;
-	float 			wallHitY;
-	float 			distance;
-	bool 			wasHitVertical;
-	float 			hitWallColor;
-	float 			isRayFacingDown;
-	float 			isRayFacingUp;
-	float 			isRayFacingRight;
-	float 			isRayFacingLeft;
-	float 			rotationangle;
-    float 			turndirection;
-    float 			rotationspeed;
-    float 			walkdirection;
-    float 			movespeed;
-	float 			movestep;
-	float 			angle;
-	int 			colo;
+	int				radius;
+	float			rayAngle;
+	float			wallHitX;
+	float			wallHitY;
+	float			distance;
+	bool			wasHitVertical;
+	float			hitWallColor;
+	float			isRayFacingDown;
+	float			isRayFacingUp;
+	float			isRayFacingRight;
+	float			isRayFacingLeft;
+	float			rotationangle;
+	float			turndirection;
+	float			rotationspeed;
+	float			walkdirection;
+	float			movespeed;
+	float			movestep;
+	float			angle;
+	int				colo;
 	t_map			map;
 	t_raycasting	rc;
 	t_raysprite		rs;
@@ -239,18 +235,32 @@ typedef struct		s_cub
 	t_identifiers	id;
 }					t_cub;
 
-typedef struct  s_data {
-    void        *img;
-    char        *addr;
-    int         bits_per_pixel;
-    int         line_length;
-    int         endian;
-}               t_data;
+typedef struct s_draw
+{
+	int			start;
+	int			end;
+	float		texture_y;
+	int			color;
+	int			offset_x;
+	int			offset_y;
+	int			dist_from_top;
+}				t_draw;
+
+typedef struct s_data
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_data;
 
 float			g_ray_distance[2561];
-int			*dst;
-t_data 			img;
-t_cub   		*cub;
+int				*g_dst;
+char			**g_tab;
+t_data			g_img;
+t_draw			g_draw;
+t_cub			*g_cub;
 t_sprite		g_s_data[50];
 t_image			g_north;
 t_image			g_west;
@@ -258,30 +268,30 @@ t_image			g_south;
 t_image			g_east;
 t_sprite		g_sprite;
 
-int					read_fil(char **argv, t_cub *cub);
-void				check_identifier(t_cub *cub, char *line);
-void				save_res(t_cub *cub, char *line, int i);
+int					read_fil(char **argv, t_cub *g_cub);
+void				check_identifier(t_cub *g_cub, char *line);
 char				*save_texture(char *line, int i);
-int					save_color(t_cub *cub, char *line, int i);
-void				check_color(t_cub *cub, char *line, int i);
-void				check_map(t_cub *cub);
-void				check_file(t_cub *cub);
-void				save_map(t_cub *cub);
-int					exit_game(t_cub *cub, int e);
-void                my_mlx_pixel_put(int x, int y, int color);
-int                 draw_2d(void);
-int	                ft_isspace(int c);
-void 				cast(void);
-float 				normalizeAngle(float angle);
-int     			hasWallAt(float x, float y);
-float 				distanceBetweenPoints(float x1, float y1, float x2, float y2);
-void 				dda(float x0, float y0, float x1, float y1);
-int 				update(void);
-void 				rayDir(float angle);
-void 				player_step(void);
-void 				player_pos(void);
-void            	my_mlx_pixel_put(int x, int y, int color);
-void   				circle(float x, float y, int radius);
+int					save_color(t_cub *g_cub, char *line, int i);
+void				check_color(t_cub *g_cub, char *line, int i);
+void				check_map(t_cub *g_cub);
+void				check_file(t_cub *g_cub);
+void				save_map(t_cub *g_cub);
+int					exit_game(t_cub *g_cub, int e);
+void				my_mlx_pixel_put(int x, int y, int color);
+int					draw_2d(void);
+int					ft_isspace(int c);
+void				cast(void);
+float				normalizeAngle(float angle);
+int					hasWallAt(float x, float y);
+float				distanceBetweenPoints(float x1, float y1, \
+					float x2, float y2);
+void				dda(float x0, float y0, float x1, float y1);
+int					update(void);
+void				rayDir(float angle);
+void				player_step(void);
+void				player_pos(void);
+void				my_mlx_pixel_put(int x, int y, int color);
+void				circle(float x, float y, int radius);
 int					key_release(int keycode);
 int					key_press(int keycode);
 int					key_exit(void);
@@ -289,7 +299,8 @@ unsigned int		shadow(unsigned int color, int col);
 void				init_textures(void);
 void				ft_empty_trash(float rayangle, int col);
 unsigned int		rgb_to_int(unsigned int r, unsigned int g, unsigned int b);
-void				ft_draw_texture(t_image ptr, int col, float offset, float wallstripheight);
+void				ft_draw_texture(t_image ptr, int col, float offset, \
+					float wallstripheight);
 void				raysprite(void);
 static t_texture	set_texture(char *root_texture);
 void				init_texture(void);
@@ -300,9 +311,22 @@ void				ft_sort_sprites(void);
 void				init_sprites_pos(void);
 float				distance(float x1, float y1, float x2, float y2);
 void				init_sprites(void);
-void				bmp(t_cub *cub);
+void				bmp(t_cub *g_cub);
 void				free_tab(char **tab);
-void				exit_map(t_cub *cub);
-char 				**fill_map(void);
-
+void				exit_map(t_cub *g_cub);
+char				**fill_map(void);
+void				ressolution(int *x, int *y, char **tab);
+size_t				ft_tablen(char **s);
+int					exit_fuck(void);
+void				init(char **argv);
+void				call_me(char **argv);
+int					ternary(int condition, int ret1, int ret2);
+void				read_lin(t_cub *g_cub, char *line);
+void				exit_map(t_cub *g_cub);
+int					exit_game(t_cub *g_cub, int e);
+void				errors(int e);
+int					ft_issymbol(int c);
+int					iterate_map(int i);
+int					condition(char **map, int i, int j);
+void				save_res(t_cub *g_cub, char *line, int i);
 #endif

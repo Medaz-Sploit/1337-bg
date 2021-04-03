@@ -3,18 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazoukni <mazoukni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nabboudi <nabboudi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 07:21:17 by mazoukni          #+#    #+#             */
-/*   Updated: 2021/03/28 14:13:19 by mazoukni         ###   ########.fr       */
+/*   Updated: 2021/03/30 07:25:17 by nabboudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	exit_fuck(void)
+{
+	exit(0);
+}
+
 void	free_tab(char **tab)
 {
-	int i;
+	int	i;
+
 	i = -1;
 	if (tab)
 	{
@@ -78,7 +84,7 @@ static void	errors_defined(int e)
 		ft_putstr_fd("Error\nNo player position defined\n", 1);
 }
 
-static void	errors(int e)
+void	errors(int e)
 {
 	if (e > 11)
 		errors_defined(e);
@@ -104,53 +110,4 @@ static void	errors(int e)
 		ft_putstr_fd("Error\nInvalid line in configuration file\n", 1);
 	else if (e == 11)
 		ft_putstr_fd("Error\nInvalid character in the map\n", 1);
-}
-
-void	exit_map(t_cub *cub)
-{
-	int i;
-
-	i = 0;
-	if (cub->sprite)
-	{
-		while (i < cub->rc.nbr_sprites)
-		{
-			if (cub->sprite[i].get_data)
-				mlx_destroy_image(cub->mlx_ptr, cub->sprite[i].img_ptr);
-			if (cub->mlx_ptr && cub->win_ptr)
-				mlx_clear_window(cub->mlx_ptr, cub->win_ptr);
-			i++;
-		}
-	}
-	if (cub->sprite)
-		free(cub->sprite);
-	i = 0;
-	if (cub->map.tmp)
-		free(cub->map.tmp);
-	if (cub->map.map)
-	{
-		while (i <= cub->map.rows)
-			free(cub->map.map[i++]);
-	}
-	free(cub->map.map);
-}
-
-int			exit_game(t_cub *cub, int e)
-{
-	if (e > 0 && e < 34)
-		errors(e);
-	exit_map(cub);
-	free(cub->mlx_ptr);
-	free(cub->win_ptr);
-	free(cub->north.img_ptr);
-	free(cub->south.img_ptr);
-	free(cub->east.img_ptr);
-	free(cub->west.img_ptr);
-	free(cub->map.north);
-	free(cub->map.south);
-	free(cub->map.east);
-	free(cub->map.west);
-	free(cub->map.sprite);
-	exit(0);
-	return (0);
 }

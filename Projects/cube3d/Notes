@@ -1,0 +1,13 @@
+#error 1:
++ space after texture path
++ multiple textures on map.cub
++ color must be separted by only 1 comma between numbers
++ resolution bigger then INTMAX
++ Map error when found space serrounding (0, N, W, E, S)
+1111111111
+1N001000001
+10000000001
+100011111111
+10001
+11111
+
